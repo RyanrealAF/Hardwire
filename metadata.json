@@ -1,0 +1,6 @@
+{
+  "name": "The Hardwire Method - Interactive Textbook",
+  "description": "An interactive digital textbook and production workbench for 'The Hardwire Method: Music Theory for the Streets', featuring real-time audio engines, interactive cadence drills, piano rolls, microtiming simulators, and capstone labs.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
