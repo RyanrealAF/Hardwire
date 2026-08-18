@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hardwire-v1';
+const CACHE_NAME = 'hardwire-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
