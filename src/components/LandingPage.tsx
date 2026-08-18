@@ -112,7 +112,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   ]);
 
   const [midiLog, setMidiLog] = useState<string[]>([
-    '[SYS_INIT] HARDWIRE GRANULAR MIDI CORE READY',
+    '[SYS_INIT] HARDWIRE MIDI CORE READY',
     '[CLK_SRC] INTERNAL 96 PPQN HARMONIC MATRIX LOCKED',
     '[STATUS] AWAITING MASTER TRANSPORT ENGAGE'
   ]);
@@ -214,9 +214,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     soundEngine.init();
     setSeamFlash(true);
     setIsCoverOpen(true);
-
-    soundEngine.playKick(undefined, 125, true);
-    soundEngine.playChord([48, 55, 60, 67], 1.2, 105);
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const delay = reduced ? 400 : 850;
@@ -1584,7 +1581,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <section className="mt-20 border-t border-[#232327] pt-12 space-y-8">
           <div>
             <span className="eyebrow">Exhaustive Curriculum Roadmap</span>
-            <h2 className="tracks-h2 mb-2">28 Granular Lessons. Zero Gatekeeping.</h2>
+            <h2 className="tracks-h2 mb-2">28 Lessons. Zero Gatekeeping.</h2>
             <p className="text-sm font-mono text-[#8a888f] max-w-2xl">
               From the mechanics of internal biological clocks to advanced sidechain compression and mobile mix translation, every single lesson bridges street production with formal engineering principles.
             </p>

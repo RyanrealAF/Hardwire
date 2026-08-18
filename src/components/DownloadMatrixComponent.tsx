@@ -1,31 +1,83 @@
 import React, { useState } from 'react';
-import { Download, Check, Copy } from 'lucide-react';
+import { Download, Check, Copy, BookOpen } from 'lucide-react';
 
 export const DownloadMatrixComponent: React.FC = () => {
-  const [copiedPdf, setCopiedPdf] = useState(false);
-  const [copiedDocx, setCopiedDocx] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-  const handleCopy = (path: string, type: 'pdf' | 'docx') => {
+  const handleCopy = (path: string, key: string) => {
     const fullUrl = `${window.location.origin}${path}`;
-    navigator.clipboard.writeText(fullUrl).then(() => {
-      if (type === 'pdf') {
-        setCopiedPdf(true);
-        setTimeout(() => setCopiedPdf(false), 2000);
-      } else {
-        setCopiedDocx(true);
-        setTimeout(() => setCopiedDocx(false), 2000);
-      }
-    }).catch(() => {
-      alert(`${type.toUpperCase()} Link: ${fullUrl}`);
-    });
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        setCopiedKey(key);
+        setTimeout(() => setCopiedKey(null), 2000);
+      }).catch(() => {
+        setCopiedKey(key);
+        setTimeout(() => setCopiedKey(null), 2000);
+      });
+    } else {
+      setCopiedKey(key);
+      setTimeout(() => setCopiedKey(null), 2000);
+    }
   };
+
+  const downloads = [
+    {
+      id: 'pdf',
+      format: 'FORMAT: .PDF',
+      tag: 'Print & Desktop',
+      tagColor: 'text-emerald-400 bg-emerald-950/60 border-emerald-800/80',
+      btnColor: 'bg-emerald-600 hover:bg-emerald-500 text-zinc-950',
+      title: 'Printable Master PDF',
+      desc: 'High-resolution 62-page fixed layout formatted with standard margins for direct printing or high-density offline tablet study.',
+      url: '/THE_HARDWIRE_METHOD_TEXTBOOK.pdf',
+      filename: 'THE_HARDWIRE_METHOD_TEXTBOOK.pdf',
+      btnText: 'Download PDF',
+    },
+    {
+      id: 'epub',
+      format: 'FORMAT: .EPUB',
+      tag: 'eReaders & Mobile',
+      tagColor: 'text-purple-400 bg-purple-950/60 border-purple-800/80',
+      btnColor: 'bg-purple-600 hover:bg-purple-500 text-zinc-950',
+      title: 'Standard EPUB Edition',
+      desc: 'Reflowable typography for Apple Books, Amazon Kindle (KDP), Kobo, and mobile reader applications.',
+      url: '/THE_HARDWIRE_METHOD_TEXTBOOK.epub',
+      filename: 'THE_HARDWIRE_METHOD_TEXTBOOK.epub',
+      btnText: 'Download EPUB',
+    },
+    {
+      id: 'docx',
+      format: 'FORMAT: .DOCX',
+      tag: 'Editable Document',
+      tagColor: 'text-sky-400 bg-sky-950/60 border-sky-800/80',
+      btnColor: 'bg-sky-600 hover:bg-sky-500 text-zinc-950',
+      title: 'Editable Source Document',
+      desc: 'Source text payload formatted for Word processors, annotation, classroom remixing, or text-to-speech screen readers.',
+      url: '/THE_HARDWIRE_METHOD_TEXTBOOK.docx',
+      filename: 'THE_HARDWIRE_METHOD_TEXTBOOK.docx',
+      btnText: 'Download DOCX',
+    },
+    {
+      id: 'html',
+      format: 'FORMAT: .HTML',
+      tag: 'Standalone Reader',
+      tagColor: 'text-teal-400 bg-teal-950/60 border-teal-800/80',
+      btnColor: 'bg-teal-600 hover:bg-teal-500 text-zinc-950',
+      title: 'Self-Contained HTML Book',
+      desc: 'Zero-dependency standalone digital book readable in any web browser without internet connection or external CSS.',
+      url: '/THE_HARDWIRE_METHOD_TEXTBOOK.html',
+      filename: 'THE_HARDWIRE_METHOD_TEXTBOOK.html',
+      btnText: 'Open HTML Book',
+      isExternal: true,
+    }
+  ];
 
   return (
     <section className="w-full max-w-5xl mx-auto px-4 py-8 bg-zinc-950 text-zinc-100 font-sans border border-zinc-800 rounded-lg shadow-2xl">
       {/* Section Header */}
       <div className="border-b border-zinc-800 pb-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white uppercase flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-white uppercase flex items-center gap-2 font-display">
             <span className="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
             Curriculum Distribution Hub
           </h2>
@@ -38,89 +90,67 @@ export const DownloadMatrixComponent: React.FC = () => {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {downloads.map((item) => {
+          const isCopied = copiedKey === item.id;
+          return (
+            <div
+              key={item.id}
+              className="flex flex-col justify-between p-5 bg-zinc-900/60 border border-zinc-800 rounded-md hover:border-zinc-700 transition-colors"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className={`px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider border rounded ${item.tagColor}`}>
+                    {item.tag}
+                  </span>
+                  <span className="text-xs font-mono text-zinc-500">{item.format}</span>
+                </div>
+                <h3 className="text-lg font-semibold text-white tracking-tight mb-1">{item.title}</h3>
+                <p className="text-xs text-zinc-400 mb-4 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
 
-        {/* Card 1: Printable PDF */}
-        <div className="flex flex-col justify-between p-5 bg-zinc-900/60 border border-zinc-800 rounded-md hover:border-zinc-700 transition-colors">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 rounded">
-                Print & Desktop
-              </span>
-              <span className="text-xs font-mono text-zinc-500">FORMAT: .PDF</span>
+              <div className="pt-3 border-t border-zinc-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+                <a
+                  href={item.url}
+                  {...(item.isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : { download: item.filename })}
+                  className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 font-bold text-xs uppercase tracking-wider rounded transition-colors ${item.btnColor}`}
+                >
+                  {item.isExternal ? (
+                    <BookOpen className="w-4 h-4" />
+                  ) : (
+                    <Download className="w-4 h-4" />
+                  )}
+                  {item.btnText}
+                </a>
+                <button
+                  onClick={() => handleCopy(item.url, item.id)}
+                  className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-mono rounded border border-zinc-700 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                  title="Copy direct download link"
+                >
+                  {isCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400 font-bold">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Link</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-white tracking-tight mb-1">Printable Master PDF</h3>
-            <p className="text-xs text-zinc-400 mb-4 leading-relaxed">
-              High-resolution fixed layout formatted with standard page margins for direct printing or high-density offline tablet viewing.
-            </p>
-          </div>
-
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <a 
-              href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf" 
-              download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold text-xs uppercase tracking-wider rounded transition-colors"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M10 12l-5-5h3V2h4v5h3l-5 5zm-7 4h14v2H3v-2z"/>
-              </svg>
-              Download PDF
-            </a>
-            <button 
-              onClick={() => handleCopy('/THE_HARDWIRE_METHOD_TEXTBOOK.pdf', 'pdf')}
-              className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-mono rounded border border-zinc-700 transition-colors cursor-pointer flex items-center justify-center gap-1"
-              title="Copy direct download link"
-            >
-              {copiedPdf ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedPdf ? 'Copied!' : 'Copy Link'}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Card 2: Editable / eBook Document (.docx) */}
-        <div className="flex flex-col justify-between p-5 bg-zinc-900/60 border border-zinc-800 rounded-md hover:border-zinc-700 transition-colors">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400 bg-sky-950/60 border border-sky-800/80 rounded">
-                eReader & Edit
-              </span>
-              <span className="text-xs font-mono text-zinc-500">FORMAT: .DOCX</span>
-            </div>
-            <h3 className="text-lg font-semibold text-white tracking-tight mb-1">Editable Textbook Document</h3>
-            <p className="text-xs text-zinc-400 mb-4 leading-relaxed">
-              Source text payload suitable for conversion to .EPUB, screen-readers, or offline modular note-taking inside word processors.
-            </p>
-          </div>
-
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <a 
-              href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx" 
-              download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-sky-600 hover:bg-sky-500 text-zinc-950 font-bold text-xs uppercase tracking-wider rounded transition-colors"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M10 12l-5-5h3V2h4v5h3l-5 5zm-7 4h14v2H3v-2z"/>
-              </svg>
-              Download DOCX
-            </a>
-            <button 
-              onClick={() => handleCopy('/THE_HARDWIRE_METHOD_TEXTBOOK.docx', 'docx')}
-              className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-mono rounded border border-zinc-700 transition-colors cursor-pointer flex items-center justify-center gap-1"
-              title="Copy direct download link"
-            >
-              {copiedDocx ? <Check className="w-3.5 h-3.5 text-sky-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedDocx ? 'Copied!' : 'Copy Link'}</span>
-            </button>
-          </div>
-        </div>
-
+          );
+        })}
       </div>
 
       {/* Footer Metadata & PWA Status */}
       <div className="mt-6 pt-4 border-t border-zinc-800/60 flex flex-col sm:flex-row justify-between items-center text-[11px] text-zinc-500 font-mono gap-2">
-        <span>HOST: Cloudflare Pages Edge CDN</span>
-        <span>CACHE: Progressive Offline Ready</span>
+        <span>HOST: Cloudflare Pages Edge CDN (buildwhilebleeding.com)</span>
+        <span>CACHE: Progressive Offline Ready (sw.js active)</span>
       </div>
-
     </section>
   );
 };
