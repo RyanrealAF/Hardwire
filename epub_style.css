@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  margin: 5%;
+}
+h1, h2, h3 {
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+code, pre {
+  font-family: monospace;
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+}

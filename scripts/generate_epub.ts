@@ -272,9 +272,10 @@ export async function generateEpub(): Promise<void> {
 
   const options = {
     title: 'The Hardwire Method: Music Theory for the Streets',
-    author: 'The Hardwire Audio Research Labs',
-    publisher: 'Hardwire Publishing',
-    description: 'Rap Cadence, Subdivision, MIDI Geometry, and Urban Production Theory',
+    author: 'RyanrealAF',
+    publisher: 'RyanrealAF',
+    description: 'Interactive manual and curriculum for rap cadence, rhythmic structure, and audio workflows.',
+    rights: 'Copyright © 2026 RyanrealAF. All rights reserved.',
     cover: undefined, // Text-based standard cover
     css: epubCss,
     tocTitle: 'Table of Contents'

@@ -4,7 +4,9 @@ const ASSETS_TO_CACHE = [
   '/index.html',
   '/manifest.json',
   '/THE_HARDWIRE_METHOD_TEXTBOOK.pdf',
-  '/THE_HARDWIRE_METHOD_TEXTBOOK.docx'
+  '/THE_HARDWIRE_METHOD_TEXTBOOK.docx',
+  '/THE_HARDWIRE_METHOD_TEXTBOOK.epub',
+  '/THE_HARDWIRE_METHOD_TEXTBOOK.html'
 ];
 
 self.addEventListener('install', (event) => {
