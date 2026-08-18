@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CURRICULUM_MODULES } from './data/curriculumData';
 import { ModuleId, LessonId } from './types';
 import { Sidebar } from './components/Sidebar';
@@ -14,6 +14,13 @@ export default function App() {
   const [currentLessonId, setCurrentLessonId] = useState<LessonId>('m1-l1');
   const [completedLessons, setCompletedLessons] = useState<string[]>(['m1-l1']);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
+  // Scroll to top immediately whenever the page/lesson/module or view mode changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [currentLessonId, currentModuleId, viewMode]);
 
   // Flatten all lessons for linear page indexing
   const allLessons = CURRICULUM_MODULES.flatMap((m) => m.lessons);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Lesson, ModuleInfo } from '../types';
 import { MetronomeDrill } from './interactive/MetronomeDrill';
 import { SubdivisionVisualizer } from './interactive/SubdivisionVisualizer';
@@ -50,6 +50,12 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
 }) => {
   const [selectedQuizAnswer, setSelectedQuizAnswer] = useState<number | null>(null);
   const [showQuizResult, setShowQuizResult] = useState<boolean>(false);
+
+  // Reset quiz states whenever a new lesson is loaded
+  useEffect(() => {
+    setSelectedQuizAnswer(null);
+    setShowQuizResult(false);
+  }, [lesson.id]);
 
   const renderWidget = (widgetId?: string) => {
     switch (widgetId) {
