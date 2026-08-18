@@ -449,18 +449,25 @@ The Hardwire Method completely rebuilds musical pedagogy around the physics of d
     // Skip Header and Footer on Cover Page (Page 0)
     if (i === 0) continue;
 
+    // Temporarily disable page margins so header & footer drawing outside normal bounds
+    // does not trigger automatic doc.addPage()
+    const origTop = doc.page.margins.top;
+    const origBottom = doc.page.margins.bottom;
+    doc.page.margins.top = 0;
+    doc.page.margins.bottom = 0;
+
     // Running Header
     doc.fontSize(7.5).font('Courier-Bold').fillColor('#8B8378').text(
       'THE HARDWIRE METHOD • MUSIC THEORY FOR THE STREETS',
       54,
       32,
-      { width: contentWidth, align: 'left' }
+      { width: contentWidth, align: 'left', lineBreak: false }
     );
     doc.fontSize(7.5).font('Courier').fillColor('#8B8378').text(
       'STANDALONE PRINTABLE EDITION',
       54,
       32,
-      { width: contentWidth, align: 'right' }
+      { width: contentWidth, align: 'right', lineBreak: false }
     );
     doc.strokeColor('#E5E1DA').lineWidth(0.5).moveTo(54, 44).lineTo(54 + contentWidth, 44).stroke();
 
@@ -470,14 +477,18 @@ The Hardwire Method completely rebuilds musical pedagogy around the physics of d
       'Feel it. Name it. See it. Control it.',
       54,
       pageHeight - 34,
-      { width: contentWidth, align: 'left' }
+      { width: contentWidth, align: 'left', lineBreak: false }
     );
     doc.fontSize(7.5).font('Courier-Bold').fillColor('#1A1A1A').text(
       `Page ${i + 1} of ${totalPages}`,
       54,
       pageHeight - 34,
-      { width: contentWidth, align: 'right' }
+      { width: contentWidth, align: 'right', lineBreak: false }
     );
+
+    // Restore original margins
+    doc.page.margins.top = origTop;
+    doc.page.margins.bottom = origBottom;
   }
 
   doc.end();

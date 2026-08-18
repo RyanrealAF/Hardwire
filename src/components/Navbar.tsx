@@ -103,22 +103,33 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
       </div>
 
-      {/* Audio Engine Live Switch & PDF / eBook Download */}
+      {/* Audio Engine Live Switch & PDF / HTML / eBook Download */}
       <div className="flex items-center gap-2">
+        <a
+          href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#0D9488]/40 bg-[#0D9488]/10 text-[#0D9488] hover:bg-[#0D9488]/20 transition-colors text-xs font-semibold font-mono"
+          title="Open Standalone HTML eBook Edition"
+        >
+          <BookOpen className="w-3.5 h-3.5" />
+          <span className="text-[10px] uppercase tracking-wider font-bold">HTML Book</span>
+        </a>
+
         <a
           href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
           download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#FF5A1F]/40 bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F]/20 transition-colors text-xs font-semibold font-mono"
+          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#FF5A1F]/40 bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F]/20 transition-colors text-xs font-semibold font-mono"
           title="Download Standalone Printable PDF"
         >
           <Download className="w-3.5 h-3.5" />
-          <span className="text-[10px] uppercase tracking-wider font-bold">Printable PDF</span>
+          <span className="text-[10px] uppercase tracking-wider font-bold">PDF</span>
         </a>
 
         <a
           href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
           download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059]/20 transition-colors text-xs font-semibold font-mono"
+          className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059]/20 transition-colors text-xs font-semibold font-mono"
           title="Download eBook (.docx)"
         >
           <Download className="w-3.5 h-3.5" />

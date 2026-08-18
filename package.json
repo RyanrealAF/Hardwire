@@ -12,7 +12,8 @@
     "generate:pdf": "tsx scripts/generate_pdf.ts",
     "generate:docx": "tsx scripts/generate_docx.ts",
     "generate:md": "tsx scripts/generate_markdown.ts",
-    "generate:books": "tsx scripts/generate_docx.ts && tsx scripts/generate_pdf.ts && tsx scripts/generate_markdown.ts",
+    "generate:html": "tsx scripts/generate_html.ts",
+    "generate:books": "tsx scripts/generate_docx.ts && tsx scripts/generate_pdf.ts && tsx scripts/generate_markdown.ts && tsx scripts/generate_html.ts",
     "pages:build": "vite build",
     "pages:deploy": "wrangler pages deploy dist",
     "deploy": "npm run build && wrangler pages deploy dist"

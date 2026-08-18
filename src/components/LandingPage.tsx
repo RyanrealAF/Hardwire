@@ -822,6 +822,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="text-[10px] text-[#8a888f] w-7 text-right">{masterVol}%</span>
           </div>
 
+          <a
+            href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#131316] hover:bg-[#232327] border border-[#0D9488]/40 text-xs font-mono text-[#2FD9C4] transition-colors"
+            title="Open Standalone HTML eBook"
+          >
+            <BookOpen className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">HTML eBook</span>
+          </a>
+
           <button
             onClick={closeCover}
             className="px-2.5 py-1.5 rounded bg-[#131316] hover:bg-[#232327] border border-[#37373d] text-xs font-mono text-[#8a888f] hover:text-[#ece7dd] flex items-center gap-1.5 transition-colors cursor-pointer"
@@ -1755,8 +1766,31 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           >
             Begin Module 01: The Pocket &rarr;
           </button>
-          <div className="text-xs font-mono text-[#8a888f]">
-            100% Free &bull; Zero Sheet Music &bull; Pure Street Engineering
+          <div className="text-xs font-mono text-[#8a888f] flex flex-wrap items-center justify-center gap-4 pt-2">
+            <a
+              href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#2fd9c4] hover:underline flex items-center gap-1"
+            >
+              <span>Read HTML eBook &rarr;</span>
+            </a>
+            <span className="opacity-40">&bull;</span>
+            <a
+              href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
+              download
+              className="text-[#ff5a1f] hover:underline"
+            >
+              Printable PDF
+            </a>
+            <span className="opacity-40">&bull;</span>
+            <a
+              href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
+              download
+              className="text-[#c5a059] hover:underline"
+            >
+              eBook (.docx)
+            </a>
           </div>
         </div>
 
