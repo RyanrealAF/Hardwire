@@ -151,6 +151,86 @@ export const DownloadMatrixComponent: React.FC = () => {
         <span>HOST: Cloudflare Pages Edge CDN (buildwhilebleeding.com)</span>
         <span>CACHE: Progressive Offline Ready (sw.js active)</span>
       </div>
+
+      {/* Amazon KDP Ingestion Assets & Cover Artwork Section */}
+      <div className="mt-6 pt-6 border-t border-zinc-800">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+          <div>
+            <h3 className="text-sm font-bold tracking-wider text-amber-400 uppercase font-mono flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+              Amazon KDP Marketplace Assets & Cover Art
+            </h3>
+            <p className="text-xs text-zinc-400 mt-0.5">High-resolution cover assets formatted for Kindle Direct Publishing & Paperback</p>
+          </div>
+          <span className="text-[10px] font-mono px-2 py-0.5 bg-amber-950/60 text-amber-300 border border-amber-800/80 rounded self-start sm:self-auto">
+            Ready for Upload
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Kindle Cover Card */}
+          <div className="p-4 bg-zinc-900/40 border border-zinc-800/80 rounded flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-mono font-bold text-white uppercase">Kindle eBook Front Cover</span>
+                <span className="text-[10px] font-mono text-zinc-400">2560 x 1600 px (1.6:1)</span>
+              </div>
+              <div className="w-full h-44 bg-zinc-950 border border-zinc-800 rounded overflow-hidden mb-3 relative flex items-center justify-center">
+                <img
+                  src="/kdp-kindle-cover.jpg"
+                  alt="Amazon KDP Kindle eBook Cover"
+                  className="w-full h-full object-cover object-center"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed mb-3">
+                Full-resolution portrait cover asset for digital Kindle store listings with high-contrast cyber-minimalist typography.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 pt-2 border-t border-zinc-800">
+              <a
+                href="/kdp-kindle-cover.jpg"
+                download="THE_HARDWIRE_METHOD_KDP_KINDLE_COVER.jpg"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-amber-600 hover:bg-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-wider rounded transition-colors"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download eBook Cover
+              </a>
+            </div>
+          </div>
+
+          {/* Paperback Full-Wrap Card */}
+          <div className="p-4 bg-zinc-900/40 border border-zinc-800/80 rounded flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-mono font-bold text-white uppercase">Paperback Full-Wrap Cover</span>
+                <span className="text-[10px] font-mono text-zinc-400">6"x9" (3717 x 2775 px @ 300 DPI)</span>
+              </div>
+              <div className="w-full h-44 bg-zinc-950 border border-zinc-800 rounded overflow-hidden mb-3 relative flex items-center justify-center">
+                <img
+                  src="/kdp-paperback-wrap.jpg"
+                  alt="Amazon KDP Paperback Full-Wrap Cover"
+                  className="w-full h-full object-cover object-center"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed mb-3">
+                Full-wrap cover with front panel, 0.14" spine for 62 pages, back cover summary, and barcode clearance zone.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 pt-2 border-t border-zinc-800">
+              <a
+                href="/kdp-paperback-wrap.jpg"
+                download="THE_HARDWIRE_METHOD_KDP_PAPERBACK_WRAP.jpg"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-zinc-700 hover:bg-zinc-600 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download Full Wrap
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
