@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
       </div>
 
-      {/* Audio Engine Live Switch & PDF / HTML / eBook Download */}
+      {/* Audio Engine Live Switch & PDF / EPUB / HTML / eBook Download */}
       <div className="flex items-center gap-2">
         <a
           href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
@@ -113,14 +113,24 @@ export const Navbar: React.FC<NavbarProps> = ({
           title="Open Standalone HTML eBook Edition"
         >
           <BookOpen className="w-3.5 h-3.5" />
-          <span className="text-[10px] uppercase tracking-wider font-bold">HTML Book</span>
+          <span className="text-[10px] uppercase tracking-wider font-bold">HTML</span>
+        </a>
+
+        <a
+          href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+          download="THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 text-[#8B5CF6] hover:bg-[#8B5CF6]/20 transition-colors text-xs font-semibold font-mono"
+          title="Download Consumer EPUB (Apple Books / KDP / Kobo)"
+        >
+          <Download className="w-3.5 h-3.5" />
+          <span className="text-[10px] uppercase tracking-wider font-bold">EPUB</span>
         </a>
 
         <a
           href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
           download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-          className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#FF5A1F]/40 bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F]/20 transition-colors text-xs font-semibold font-mono"
-          title="Download Standalone Printable PDF"
+          className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#FF5A1F]/40 bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F]/20 transition-colors text-xs font-semibold font-mono"
+          title="Download Standalone Printable PDF (62 Pages)"
         >
           <Download className="w-3.5 h-3.5" />
           <span className="text-[10px] uppercase tracking-wider font-bold">PDF</span>
@@ -129,11 +139,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         <a
           href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
           download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-          className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059]/20 transition-colors text-xs font-semibold font-mono"
-          title="Download eBook (.docx)"
+          className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059]/20 transition-colors text-xs font-semibold font-mono"
+          title="Download Source Word Document (.docx)"
         >
           <Download className="w-3.5 h-3.5" />
-          <span className="text-[10px] uppercase tracking-wider font-bold">eBook</span>
+          <span className="text-[10px] uppercase tracking-wider font-bold">DOCX</span>
         </a>
 
         <button

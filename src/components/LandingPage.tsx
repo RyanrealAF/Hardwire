@@ -25,6 +25,7 @@ import {
 import { soundEngine } from '../audio/soundEngine';
 import { ModuleId, LessonId } from '../types';
 import { CURRICULUM_MODULES } from '../data/curriculumData';
+import { DownloadMatrixComponent } from './DownloadMatrixComponent';
 
 interface LandingPageProps {
   onEnterCurriculum: (moduleId?: ModuleId, lessonId?: LessonId) => void;
@@ -1757,6 +1758,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </section>
 
         {/* ======================================================================= */}
+        {/* DOWNLOAD MATRIX & CURRICULUM DISTRIBUTION HUB */}
+        {/* ======================================================================= */}
+        <div className="mt-12">
+          <DownloadMatrixComponent />
+        </div>
+
+        {/* ======================================================================= */}
         {/* FINAL CTA & FOOTER */}
         {/* ======================================================================= */}
         <div className="cta space-y-4">
@@ -1771,25 +1779,35 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2fd9c4] hover:underline flex items-center gap-1"
+              className="text-[#2fd9c4] hover:underline font-bold flex items-center gap-1"
             >
               <span>Read HTML eBook &rarr;</span>
             </a>
             <span className="opacity-40">&bull;</span>
             <a
+              href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+              download="THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+              className="text-[#8b5cf6] hover:underline font-bold"
+              title="Standard EPUB Format (Apple Books, Kobo, Kindle)"
+            >
+              Download EPUB
+            </a>
+            <span className="opacity-40">&bull;</span>
+            <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
               download
-              className="text-[#ff5a1f] hover:underline"
+              className="text-[#ff5a1f] hover:underline font-bold"
+              title="Printable 62-Page PDF"
             >
-              Printable PDF
+              Printable PDF (62p)
             </a>
             <span className="opacity-40">&bull;</span>
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
               download
-              className="text-[#c5a059] hover:underline"
+              className="text-[#c5a059] hover:underline font-bold"
             >
-              eBook (.docx)
+              Word (.docx)
             </a>
           </div>
         </div>

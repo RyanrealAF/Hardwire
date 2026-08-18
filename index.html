@@ -2,16 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Hardwire Method - Interactive Textbook</title>
-    <meta name="description" content="An interactive digital textbook and production workbench for 'The Hardwire Method: Music Theory for the Streets'." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>The Hardwire Method • Music Theory for the Streets (Interactive Textbook & Distribution Hub)</title>
+    <meta name="description" content="Feel it first. Name it second. Control it third. The zero-fluff music theory curriculum, interactive MIDI workbench, and complete textbook distribution hub for hip-hop and electronic producers." />
+    
+    <!-- PWA & Mobile Web App Meta -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Hardwire Method" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="icon" type="image/png" href="/icon-192.png" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('PWA SW registered:', reg.scope))
+            .catch((err) => console.error('PWA SW registration failed:', err));
+        });
+      }
+    </script>
+    
+    <!-- Open Graph / Social Rich Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://the-hardwire-method.pages.dev" />
+    <meta property="og:site_name" content="The Hardwire Method" />
+    <meta property="og:title" content="The Hardwire Method • Music Theory for the Streets" />
+    <meta property="og:description" content="No sheet music. No gatekeeping. Rap cadence, subdivision math, MIDI coordinate geometry, and urban production theory." />
+    <meta property="og:image" content="https://the-hardwire-method.pages.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Hardwire Method - Music Theory for the Streets" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Hardwire Method • Music Theory for the Streets" />
+    <meta name="twitter:description" content="Feel it first. Name it second. Control it third. Zero-fluff music theory & MIDI workbench." />
+    <meta name="twitter:image" content="https://the-hardwire-method.pages.dev/og-image.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Cinzel:wght@500;600;700;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <meta property="og:title" content="The Hardwire Method - Music Theory for the Streets" />
-    <meta property="og:description" content="Interactive digital textbook and production workbench." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <div id="root"></div>

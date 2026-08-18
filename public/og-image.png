@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0A0A0B"/>
+  <!-- Grid Matrix -->
+  <g stroke="#1A1A1F" stroke-width="2">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Border -->
+  <rect x="40" y="40" width="1120" height="550" rx="24" fill="none" stroke="#FF5A1F" stroke-width="4" opacity="0.8"/>
+  
+  <text x="100" y="140" font-family="'Courier New', monospace" font-size="24" font-weight="bold" fill="#FF5A1F" letter-spacing="6">THE HARDWIRE METHOD</text>
+  <text x="100" y="250" font-family="'Helvetica Neue', Arial, sans-serif" font-size="76" font-weight="900" fill="#FFFFFF">MUSIC THEORY</text>
+  <text x="100" y="335" font-family="'Helvetica Neue', Arial, sans-serif" font-size="76" font-weight="900" fill="#C5A059">FOR THE STREETS</text>
+  
+  <text x="100" y="420" font-family="'Courier New', monospace" font-size="22" fill="#ECE7DD">FEEL IT FIRST  ➔  NAME IT SECOND  ➔  CONTROL IT THIRD</text>
+  
+  <rect x="100" y="470" width="460" height="54" rx="8" fill="#131316" stroke="#37373D" stroke-width="2"/>
+  <text x="130" y="505" font-family="'Courier New', monospace" font-size="18" font-weight="bold" fill="#2FD9C4">RAP CADENCE • MIDI • SUBDIVISIONS</text>
+</svg>

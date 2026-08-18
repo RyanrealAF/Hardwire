@@ -1,0 +1,25 @@
+{
+  "short_name": "Hardwire Method",
+  "name": "The Hardwire Method: Music Theory for the Streets",
+  "description": "Interactive manual and curriculum for rap cadence, rhythmic structure, and audio workflows.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/"
+}
