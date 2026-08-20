@@ -250,17 +250,18 @@ export async function generateEpub(): Promise<void> {
 
   // 3. Glossary Chapter
   let glossaryHtml = `
-    <h1>Street-to-DAW Audio Glossary</h1>
-    <p class="subtitle">Complete Technical Compendium</p>
+    <h1>Master Street-to-DAW Audio Glossary (Terms 01–36)</h1>
+    <p class="subtitle">Complete Technical &amp; Operational Compendium</p>
   `;
 
   VOCABULARY_LIST.forEach((item, index) => {
     glossaryHtml += `
       <div class="glossary-item">
-        <h3>${index + 1}. ${escapeHtml(item.term)} <span style="font-size: 0.7em; color: #FF5A1F;">[${escapeHtml(item.moduleName)} • ${escapeHtml(item.audioCategory)}]</span></h3>
-        <p><strong>Definition:</strong> ${escapeHtml(item.definition)}</p>
+        <h3>#${String(item.index || index + 1).padStart(2, '0')}. ${escapeHtml(item.term)} <span style="font-size: 0.7em; color: #FF5A1F;">[${escapeHtml(item.category || item.moduleName)}]</span></h3>
+        ${item.streetDefinition ? `<p style="background: #F4F1EA; padding: 0.4em 0.8em; font-style: italic;"><strong>Street Definition:</strong> "${escapeHtml(item.streetDefinition)}"</p>` : ''}
+        ${item.acousticScience ? `<p style="font-family: monospace; font-size: 0.9em; color: #0D9488;"><strong>Acoustic / DAW Science:</strong> ${escapeHtml(item.acousticScience)}</p>` : `<p><strong>Definition:</strong> ${escapeHtml(item.definition)}</p>`}
+        <p style="font-family: monospace; color: #2563EB;"><strong>Parameter Mapping:</strong> ${escapeHtml(item.dawFeature)}</p>
         <p><em>Practical Application:</em> ${escapeHtml(item.practicalApplication)}</p>
-        <p style="font-family: monospace; color: #2563EB;">DAW Feature: ${escapeHtml(item.dawFeature)}</p>
       </div>
     `;
   });

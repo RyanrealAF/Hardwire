@@ -26,6 +26,7 @@ import { soundEngine } from '../audio/soundEngine';
 import { ModuleId, LessonId } from '../types';
 import { CURRICULUM_MODULES } from '../data/curriculumData';
 import { DownloadMatrixComponent } from './DownloadMatrixComponent';
+import { AuthButton } from './AuthButton';
 
 interface LandingPageProps {
   onEnterCurriculum: (moduleId?: ModuleId, lessonId?: LessonId) => void;
@@ -847,6 +848,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <BookOpen className="w-3.5 h-3.5" />
             <span>Enter Textbook</span>
           </button>
+
+          <AuthButton compact />
         </div>
       </header>
 

@@ -74,12 +74,16 @@ function generateMarkdown(): string {
     });
   });
 
-  md += `# APPENDIX: COMPLETE STREET-TO-DAW AUDIO GLOSSARY\n\n`;
-  md += `| Term | Category / Module | Definition & Practical Application | DAW Feature / Parameter |\n`;
-  md += `| :--- | :--- | :--- | :--- |\n`;
+  md += `# APPENDIX: MASTER STREET-TO-DAW AUDIO GLOSSARY (TERMS 01–36)\n\n`;
+  md += `| # | Term | Category | Street Definition | Acoustic / DAW Science | Parameter Mapping | Practical Application |\n`;
+  md += `| :-: | :--- | :--- | :--- | :--- | :--- | :--- |\n`;
 
   VOCABULARY_LIST.forEach(item => {
-    md += `| **${item.term}** | ${item.moduleName} (${item.audioCategory}) | ${item.definition} <br>**App:** ${item.practicalApplication} | \`${item.dawFeature}\` |\n`;
+    const idxStr = item.index ? String(item.index).padStart(2, '0') : '';
+    const cat = item.category || item.moduleName;
+    const streetDef = item.streetDefinition || item.definition;
+    const science = item.acousticScience || item.definition;
+    md += `| ${idxStr} | **${item.term}** | ${cat} | ${streetDef} | ${science} | \`${item.dawFeature}\` | ${item.practicalApplication} |\n`;
   });
 
   return md;

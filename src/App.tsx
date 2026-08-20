@@ -7,13 +7,28 @@ import { ChapterView } from './components/ChapterView';
 import { HardwireGlossary, FinalAssessmentQuiz } from './components/CapstonesAndAssessments';
 import { LandingPage } from './components/LandingPage';
 import { soundEngine } from './audio/soundEngine';
+import { useAuth } from './context/AuthContext';
 
 export default function App() {
+  const { user, userProgress, updateProgress } = useAuth();
   const [viewMode, setViewMode] = useState<'landing' | 'curriculum'>('landing');
   const [currentModuleId, setCurrentModuleId] = useState<ModuleId>('module-1');
   const [currentLessonId, setCurrentLessonId] = useState<LessonId>('m1-l1');
   const [completedLessons, setCompletedLessons] = useState<string[]>(['m1-l1']);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+
+  // Sync state with cloud userProgress if available
+  useEffect(() => {
+    if (userProgress && userProgress.completedLessons && userProgress.completedLessons.length > 0) {
+      setCompletedLessons((prev) => Array.from(new Set([...prev, ...userProgress.completedLessons])));
+      if (userProgress.lastLessonId) {
+        setCurrentLessonId(userProgress.lastLessonId as LessonId);
+      }
+      if (userProgress.lastModuleId) {
+        setCurrentModuleId(userProgress.lastModuleId as ModuleId);
+      }
+    }
+  }, [userProgress]);
 
   // Scroll to top immediately whenever the page/lesson/module or view mode changes
   useEffect(() => {
@@ -32,11 +47,17 @@ export default function App() {
   const currentLesson = currentModule.lessons.find((l) => l.id === currentLessonId) || currentModule.lessons[0];
 
   const handleEnterCurriculum = (moduleId?: ModuleId, lessonId?: LessonId) => {
+    const nextMod = moduleId || currentModuleId;
+    const nextLess = lessonId || currentLessonId;
     if (moduleId) setCurrentModuleId(moduleId);
     if (lessonId) {
       setCurrentLessonId(lessonId);
       if (!completedLessons.includes(lessonId) && lessonId !== 'glossary' && lessonId !== 'assessment') {
-        setCompletedLessons((prev) => [...prev, lessonId]);
+        const nextCompleted = [...completedLessons, lessonId];
+        setCompletedLessons(nextCompleted);
+        updateProgress(nextCompleted, nextLess, nextMod);
+      } else {
+        updateProgress(completedLessons, nextLess, nextMod);
       }
     }
     setViewMode('curriculum');
@@ -47,7 +68,11 @@ export default function App() {
     setCurrentModuleId(moduleId);
     setViewMode('curriculum');
     if (!completedLessons.includes(lessonId) && lessonId !== 'glossary' && lessonId !== 'assessment') {
-      setCompletedLessons((prev) => [...prev, lessonId]);
+      const nextCompleted = [...completedLessons, lessonId];
+      setCompletedLessons(nextCompleted);
+      updateProgress(nextCompleted, lessonId, moduleId);
+    } else {
+      updateProgress(completedLessons, lessonId, moduleId);
     }
   };
 

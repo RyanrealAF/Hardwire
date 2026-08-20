@@ -879,18 +879,26 @@ export function generateHtmlBook(): string {
     html += `
             <div class="glossary-card">
               <div class="glossary-term">
-                <span>${index + 1}. ${escapeHtml(item.term)}</span>
-                <span class="glossary-badge">${escapeHtml(item.moduleName)} &bull; ${escapeHtml(item.audioCategory)}</span>
+                <span>#${String(item.index || index + 1).padStart(2, '0')}. ${escapeHtml(item.term)}</span>
+                <span class="glossary-badge">${escapeHtml(item.category || item.moduleName)}</span>
               </div>
-              <p style="font-size: 14.5px; color: var(--text); margin-bottom: 8px;">
+              ${item.streetDefinition ? `
+              <div style="font-size: 13.5px; background: rgba(197, 160, 89, 0.08); border-left: 3px solid var(--gold); padding: 6px 10px; margin-bottom: 8px; font-style: italic;">
+                <strong>Street Definition:</strong> "${escapeHtml(item.streetDefinition)}"
+              </div>` : ''}
+              ${item.acousticScience ? `
+              <p style="font-size: 13px; color: var(--text); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;">
+                <strong style="color: var(--cyan);">Acoustic / DAW Science:</strong> ${escapeHtml(item.acousticScience)}
+              </p>` : `
+              <p style="font-size: 14px; color: var(--text); margin-bottom: 6px;">
                 <strong>Definition:</strong> ${escapeHtml(item.definition)}
-              </p>
-              <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px; font-style: italic;">
-                <strong>Practical Application:</strong> ${escapeHtml(item.practicalApplication)}
-              </p>
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue);">
-                DAW Feature: <strong>${escapeHtml(item.dawFeature)}</strong>
+              </p>`}
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 6px; background: var(--bg-alt); padding: 4px 8px; border-radius: 4px;">
+                Parameter Mapping: <strong>${escapeHtml(item.dawFeature)}</strong>
               </div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 0; font-style: italic;">
+                <strong>Street Application:</strong> ${escapeHtml(item.practicalApplication)}
+              </p>
             </div>`;
   });
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Volume2, VolumeX, Home, Sparkles, BookOpen, Compass, Sliders, Download } from 'lucide-react';
 import { soundEngine } from '../audio/soundEngine';
 import { ModuleId } from '../types';
+import { AuthButton } from './AuthButton';
 
 interface NavbarProps {
   onToggleSidebar: () => void;
@@ -160,6 +161,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             {isMuted ? 'Muted' : 'Audio Live'}
           </span>
         </button>
+
+        <AuthButton compact />
       </div>
     </header>
   );

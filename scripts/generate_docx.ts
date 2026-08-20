@@ -836,9 +836,15 @@ function buildDocument(): Document {
             children: [
               new Paragraph({
                 children: [
-                  new TextRun({ text: item.definition, size: 19, color: COLOR_TEXT, font: FONT_PRIMARY }),
-                  new TextRun({ text: '\nApplication: ', bold: true, size: 18, color: COLOR_ACCENT, font: FONT_PRIMARY }),
-                  new TextRun({ text: item.practicalApplication, size: 18, color: COLOR_TEXT, font: FONT_PRIMARY })
+                  ...(item.streetDefinition ? [
+                    new TextRun({ text: `Street: "${item.streetDefinition}"\n`, italics: true, bold: true, size: 18, color: COLOR_ACCENT, font: FONT_PRIMARY }),
+                  ] : []),
+                  ...(item.acousticScience ? [
+                    new TextRun({ text: `Science: ${item.acousticScience}\n`, size: 17, color: COLOR_CYAN, font: FONT_CODE }),
+                  ] : []),
+                  new TextRun({ text: item.definition, size: 18, color: COLOR_TEXT, font: FONT_PRIMARY }),
+                  new TextRun({ text: '\nApplication: ', bold: true, size: 17, color: COLOR_PRIMARY, font: FONT_PRIMARY }),
+                  new TextRun({ text: item.practicalApplication, size: 17, color: COLOR_TEXT, font: FONT_PRIMARY })
                 ]
               })
             ]

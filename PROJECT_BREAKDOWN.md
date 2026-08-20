@@ -1,5 +1,5 @@
 # The Hardwire Method: Music Theory for the Streets
-## Comprehensive Project Architecture & Technical Breakdown
+## Comprehensive Project Architecture, Curriculum & Technical Breakdown
 
 ---
 
@@ -7,9 +7,9 @@
 
 **"Feel it first. Name it second. Control it third."**
 
-**The Hardwire Method** is an interactive digital textbook, pedagogical learning environment, and web-based music production workbench. It bridges the intuitive, street-honed instincts of urban music producers, rappers, and beatmakers with rigorous formal music theory and Digital Audio Workstation (DAW) engineering principles.
+**The Hardwire Method** is an interactive digital textbook, pedagogical learning environment, and web-based music production workbench. It bridges the intuitive, street-honed instincts of urban music producers, rappers, and beatmakers with rigorous formal music theory, digital audio workstation (DAW) engineering, and audio physics.
 
-Traditional music theory instruction relies heavily on classical Western notation (staffs, clefs, Italian tempo markings), creating a barrier for modern creators who compose via MIDI rolls, drum pads, and DAW timelines. **The Hardwire Method** demystifies theory using the concrete visual and mechanical models modern producers already know:
+Traditional music theory instruction relies heavily on classical Western notation (staffs, clefs, Italian tempo markings), creating an unnecessary barrier for modern creators who compose via MIDI rolls, drum pads, and DAW timelines. **The Hardwire Method** demystifies music theory using concrete visual, mathematical, and mechanical models modern producers already know:
 1. **The Grid & Timeline** instead of staff notation.
 2. **Subdivisions & Millisecond Offsets** instead of abstract meter.
 3. **MIDI Bytecode & Cartesian Coordinate Geometry** instead of traditional noteheads.
@@ -21,19 +21,21 @@ Traditional music theory instruction relies heavily on classical Western notatio
 
 | Layer | Technology | Purpose / Highlights |
 | :--- | :--- | :--- |
-| **Framework** | **React 19 + TypeScript 5.8** | Component architecture, strict typing for audio state, lessons, and MIDI events. |
-| **Build System** | **Vite 6** | Rapid compilation, instant module loading, and zero-HMR stability mode. |
+| **Framework** | **React 19 + TypeScript 5.8** | Component architecture, strict typing for audio state, lessons, curriculum progression, and MIDI events. |
+| **Build System** | **Vite 6** | Rapid compilation, instant module loading, and deterministic single-page bundle generation. |
 | **Styling** | **Tailwind CSS v4** | Dark industrial MPC aesthetic (`#0a0a0b`, `#ff5a1f`, `#2fd9c4`) paired with an editorial textbook layout. |
-| **Audio Engine** | **Web Audio API (Native DSP)** | 100% algorithmic audio synthesis (zero external audio assets) with sub-millisecond clock accuracy. |
+| **Audio Engine** | **Web Audio API (Native DSP)** | 100% algorithmic audio synthesis (zero external audio file dependencies) with sub-millisecond clock accuracy. |
 | **Canvas Graphics** | **HTML5 2D Canvas API** | Waterfall MIDI visualizer, animated urban skyline VU equalizer, and real-time FFT spectrum analyzer. |
-| **Iconography** | **Lucide React** | Consistent UI controls for transport, mixing, navigation, and audio meters. |
-| **Animations** | **Motion (`motion/react`) & Confetti** | Smooth state transitions, interactive pad feedback, and exam completion effects. |
+| **Auth & Cloud Database** | **Firebase Auth & Cloud Firestore** | One-click Google Sign-In with popup OAuth, real-time user progress synchronization across devices, and secured document rules. |
+| **Multi-Format Compilers** | **Node.js / Bun / TypeScript CLI** | Automated build scripts compiling the entire curriculum into PDF, EPUB, DOCX, Standalone HTML, and Unabridged Markdown. |
+| **Iconography** | **Lucide React** | Consistent UI controls for transport, mixing, navigation, authentication, and audio meters. |
+| **Animations** | **Motion (`motion/react`) & Canvas Confetti** | Smooth state transitions, interactive pad feedback, split-curtain unveil, and exam completion fanfare. |
 
 ---
 
 ### 3. Audio Synthesis Engine (`src/audio/soundEngine.ts`)
 
-The entire sound environment is synthesized in real time via the native **Web Audio API**. There are no sampled `.wav` or `.mp3` dependencies, allowing instant loading, zero latency, dynamic tempo/swing manipulation, and pitch modulation.
+The entire sound environment is synthesized in real time via the native **Web Audio API**. There are zero sampled `.wav` or `.mp3` dependencies, guaranteeing zero load latency, zero CORS or asset-hosting failures, and complete control over dynamic tempo, swing manipulation, pitch modulation, and portamento glides.
 
 ```
                   ┌──────────────────────┐
@@ -43,7 +45,7 @@ The entire sound environment is synthesized in real time via the native **Web Au
      ┌──────────────┬────────┼──────────────┬──────────────┐
      │              │        │              │              │
 ┌────▼─────┐ ┌──────▼─────┐ ┌▼────────────┐ ┌▼────────────┐ ┌▼────────────┐
-│Kick Drum │ │Snare / Clap│ │MPC Hi-Hats  │ │808 Sub Bass │ │Rhodes Chords│
+│Kick Punch│ │Snare / Clap│ │MPC Hi-Hats  │ │808 Sub Bass │ │Rhodes Chords│
 │Oscillator│ │Noise Burst │ │Cluster Osc  │ │Sine/Triangle│ │Harmonic Bank│
 │150Hz->30Hz│ │+ Bandpass  │ │+ 8kHz HPF   │ │+ Waveshaper │ │+ LFO Tremolo│
 └────┬─────┘ └──────┬─────┘ └┬────────────┘ └┬────────────┘ └┬────────────┘
@@ -84,7 +86,7 @@ The entire sound environment is synthesized in real time via the native **Web Au
 
 ---
 
-### 4. Interactive Landing Page & Urban Workbench (`LandingPage.tsx`)
+### 4. Interactive Landing Page & Urban Workbench (`src/components/LandingPage.tsx`)
 
 The landing page functions as an immersive, standalone music theory workbench and pedagogical portal:
 
@@ -117,9 +119,46 @@ The landing page functions as an immersive, standalone music theory workbench an
 - 4x4 interactive pad matrix with color-coded instrument types.
 - Hotkey triggers: `1-4`, `Q-R`, `A-F`, `Z-V`.
 
+#### G. Multi-Format Textbook Download Matrix (`DownloadMatrixComponent.tsx`)
+- Direct access to download the full textbook across 5 formats: PDF, EPUB, DOCX, HTML, and Markdown.
+
 ---
 
-### 5. Curriculum Structure & Deep Technical Topics
+### 5. Authentication, Cloud Sync & Persistence Layer
+
+The application integrates Firebase Authentication and Google Cloud Firestore for secure, automatic progress synchronization across all devices:
+
+```
+┌────────────────────────────────────────────────────────┐
+│                   CLIENT REACT APP                     │
+│  AuthProvider ─── useAuth() ─── AuthButton Component   │
+└───────────────┬────────────────────────┬───────────────┘
+                │ Google Popup Auth      │ Snapshot Sync
+                ▼                        ▼
+      ┌──────────────────┐     ┌───────────────────┐
+      │  Firebase Auth   │     │  Cloud Firestore  │
+      │ (Google Provider)│     │  Database Engine  │
+      └──────────────────┘     └─────────┬─────────┘
+                                         │
+               ┌─────────────────────────┴────────────────────────┐
+               ▼                                                  ▼
+     ┌───────────────────────┐                        ┌───────────────────────┐
+     │   /users/{userId}     │                        │ /userProgress/{userId}│
+     │  - uid                │                        │  - completedLessons[] │
+     │  - displayName        │                        │  - lastLessonId       │
+     │  - email / photoURL   │                        │  - lastModuleId       │
+     │  - lastActiveAt       │                        │  - updatedAt          │
+     └───────────────────────┘                        └───────────────────────┘
+```
+
+- **Authentication Flow (`src/lib/firebase.ts`)**: Sign in using Google popup accounts. Creates and updates the user profile record upon initial authentication.
+- **Context Management (`src/context/AuthContext.tsx`)**: Exposes reactive user state, sign-in/sign-out handlers, and automatic bi-directional syncing of lesson completions, last active module, and active lesson.
+- **Security Rules (`firestore.rules`)**: Strict document isolation ensuring users can only read and write their own data (`request.auth.uid == userId`).
+- **Blueprint Schema (`firebase-blueprint.json`)**: Declares typed JSON schema entities for `UserProfile` and `UserProgress`.
+
+---
+
+### 6. Curriculum Structure & Deep Technical Topics
 
 The textbook spans **3 core modules**, **28 exhaustive lessons**, **3 hands-on capstones**, a **20-question final assessment**, and an **interactive audio glossary**.
 
@@ -182,7 +221,7 @@ The textbook spans **3 core modules**, **28 exhaustive lessons**, **3 hands-on c
 
 ---
 
-### 6. Interactive Widget Suite (`src/components/interactive/`)
+### 7. Interactive Widget Suite (`src/components/interactive/`)
 
 Every core concept is reinforced by a dedicated interactive widget:
 
@@ -203,7 +242,7 @@ Every core concept is reinforced by a dedicated interactive widget:
 
 ---
 
-### 7. Evaluation & Capstone Suite (`src/components/CapstonesAndAssessments.tsx`)
+### 8. Evaluation & Capstone Suite (`src/components/CapstonesAndAssessments.tsx`)
 
 1. **Hardwire Interactive Audio Glossary**:
    - 35+ fully defined street-to-DAW vocabulary terms across Rhythm, Pitch, and Groove.
@@ -216,7 +255,29 @@ Every core concept is reinforced by a dedicated interactive widget:
 
 ---
 
-### 8. Mathematical Models & Production Formulas
+### 9. Multi-Format Textbook Publishing Pipeline (`scripts/`)
+
+The application contains an automated publication compilation pipeline that extracts data from `curriculumData.ts`, `vocabularyData.ts`, and `assessmentData.ts` to output professional, print-ready and digital formats:
+
+| Format | Script File | Target Output |
+| :--- | :--- | :--- |
+| **Markdown** | `scripts/generate_markdown.ts` | `THE_HARDWIRE_METHOD_TEXTBOOK_COMPLETE.md` (Complete unabridged manuscript) |
+| **PDF** | `scripts/generate_pdf.ts` | `THE_HARDWIRE_METHOD_TEXTBOOK.pdf` (Print-ready document with running headers) |
+| **EPUB** | `scripts/generate_epub.ts` | `THE_HARDWIRE_METHOD_TEXTBOOK.epub` (Reflowable eBook conforming to IDPF standards) |
+| **DOCX** | `scripts/generate_docx.ts` | `THE_HARDWIRE_METHOD_TEXTBOOK.docx` (Microsoft Word publication manuscript) |
+| **HTML** | `scripts/generate_html.ts` | `THE_HARDWIRE_METHOD_TEXTBOOK.html` (Self-contained offline textbook with embedded CSS) |
+
+---
+
+### 10. Internal Admin & Distribution System (`src/utils/distribution.ts`)
+
+- **KDP Publication Specifications**: 6" x 9" trade paperback format, exact spine thickness calculations based on page count, 300 DPI full-wrap cover dimension formulas, and Kindle eBook asset specs.
+- **Marketplace Metadata**: BISAC category mappings (`MUS004000`, `MUS037000`, `MUS040000`), keywords, copyright declarations, and publication ISBN placeholders.
+- **Admin Debugging Panel (`src/components/AdminDistributionPanel.tsx`)**: Activated via environment variable (`VITE_ENABLE_ADMIN_PANEL="true"`), query string parameter (`?admin=true`), or developer key (`localStorage`), exposing direct asset compilation metrics and marketplace copy.
+
+---
+
+### 11. Mathematical Models & Production Formulas
 
 The application incorporates formal mathematical and physical models of digital music production:
 
@@ -232,32 +293,69 @@ The application incorporates formal mathematical and physical models of digital 
 4. **Semitone Pitch Transposition**:
    $$\text{Ratio} = 2^{\frac{\Delta \text{semitones}}{12}}$$
 
+5. **Dynamic Sidechain Ducking Curve**:
+   $$G(t) = 1 - \left( 1 - 10^{-\frac{\text{Reduction (dB)}}{20}} \right) \cdot e^{-\frac{t}{\tau_{\text{release}}}}$$
+
 ---
 
-### 9. File Tree & Organization
+### 12. Complete Project File Tree & Organization
 
 ```
 /
 ├── metadata.json                         # Project metadata and permissions
-├── package.json                          # Dependencies and build scripts
+├── metadata.yaml                         # AI Studio environment manifest
+├── package.json                          # NPM dependencies and execution scripts
+├── tsconfig.json                         # TypeScript bundler and JSX configuration
+├── vite.config.ts                        # Vite configuration with Tailwind CSS plugin
 ├── index.html                            # HTML entry point with custom typography
 ├── PROJECT_BREAKDOWN.md                  # Comprehensive architectural documentation
+├── CLOUDFLARE_DEPLOYMENT.md              # Cloudflare Pages / Workers deployment guide
+├── wrangler.toml                         # Cloudflare configuration file
+├── firebase-applet-config.json           # Firebase connection configuration
+├── firebase-blueprint.json               # Firestore schema entity definitions
+├── firestore.rules                       # Firestore security rules
+├── epub_style.css                        # EPUB styling stylesheet
+├── scripts/                              # Multi-format publication compilers
+│   ├── generate_markdown.ts              # Compiles full manuscript to Markdown
+│   ├── generate_pdf.ts                   # Compiles printable PDF book
+│   ├── generate_epub.ts                  # Compiles standard reflowable EPUB
+│   ├── generate_docx.ts                  # Compiles Word (.docx) manuscript
+│   └── generate_html.ts                  # Compiles offline standalone HTML
+├── public/                               # Static distribution assets
+│   ├── THE_HARDWIRE_METHOD_TEXTBOOK.pdf
+│   ├── THE_HARDWIRE_METHOD_TEXTBOOK.epub
+│   ├── THE_HARDWIRE_METHOD_TEXTBOOK.docx
+│   ├── THE_HARDWIRE_METHOD_TEXTBOOK.html
+│   └── THE_HARDWIRE_METHOD_TEXTBOOK_COMPLETE.md
 └── src/
-    ├── main.tsx                          # React DOM initialization
-    ├── App.tsx                           # Root navigation & view mode coordinator
-    ├── types.ts                          # Full TypeScript interfaces & types
+    ├── main.tsx                          # React DOM initialization & AuthProvider wrapper
+    ├── App.tsx                           # Navigation coordinator & view mode router
+    ├── types.ts                          # Full TypeScript interfaces & database schemas
     ├── index.css                         # Global CSS & Tailwind imports
+    ├── vite-env.d.ts                     # Environment variable types
     ├── audio/
-    │   └── soundEngine.ts                # Web Audio API DSP synthesis engine
+    │   └── soundEngine.ts                # Web Audio API algorithmic synthesis engine
+    ├── lib/
+    │   └── firebase.ts                   # Firebase Auth & Firestore client layer
+    ├── context/
+    │   └── AuthContext.tsx               # Reactive user authentication & progress sync context
     ├── data/
     │   ├── curriculumData.ts             # 28 Lessons across 3 Modules
-    │   ├── vocabularyData.ts             # Interactive glossary data
+    │   ├── vocabularyData.ts             # Interactive glossary data (35+ terms)
     │   └── assessmentData.ts             # Final assessment examination questions
+    ├── hooks/
+    │   └── useInternalAdmin.ts           # Admin privilege detection hook
+    ├── utils/
+    │   ├── distribution.ts               # KDP book dimensions, spine calculus & metadata
+    │   └── telemetry.ts                  # Production telemetry logger
     └── components/
         ├── LandingPage.tsx               # Interactive Urban Workbench & Split Curtain
-        ├── Navbar.tsx                    # Top navigation & progress bar
-        ├── Sidebar.tsx                   # Course navigation drawer
+        ├── Navbar.tsx                    # Top navigation, audio status & auth trigger
+        ├── Sidebar.tsx                   # Course navigation drawer & progress bar
         ├── ChapterView.tsx               # Lesson reading interface & quiz module
+        ├── AuthButton.tsx                # Google Sign-In & user profile button
+        ├── DownloadMatrixComponent.tsx   # Multi-format textbook download panel
+        ├── AdminDistributionPanel.tsx    # Hidden admin publication inspection panel
         ├── CapstonesAndAssessments.tsx   # Glossary & Final Assessment components
         └── interactive/                  # 12 Specialized Interactive Audio Widgets
             ├── AnapesticEngineWidget.tsx
@@ -276,9 +374,11 @@ The application incorporates formal mathematical and physical models of digital 
 
 ---
 
-### 10. Summary of Accomplishments
+### 13. Summary of Accomplishments & Milestones
 
-- **Zero-Asset Audio Synthesis**: Created an algorithmic sound design engine handling drums, 808s, chords, and vocal formants.
-- **Pedagogical Translation**: Transformed abstract classical music theory into street-smart, DAW-actionable workflows.
-- **Dynamic Workbench Experience**: Built an interactive landing page featuring waterfall visualizers, live step sequencing, 6-track stem mixing, and MPC pad drumming.
-- **Complete End-to-End Curriculum**: Delivered 28 comprehensive lessons with interactive widgets, chapter quizzes, capstone projects, and a certification exam.
+- **Zero-Asset Algorithmic Audio DSP**: Native Web Audio synthesis generating kicks, snares, claps, MPC hats, 808 sub-bass with portamento slides, and polyphonic Rhodes electric keys without external samples.
+- **Pedagogical Street-to-DAW Translation**: Demystified music theory into intuitive, DAW-actionable workflows (the Grid, microtiming offsets, MIDI bytecodes, and spectral mixing).
+- **Urban Music Theory Workbench**: Interactive landing workstation featuring falling MIDI waterfall visualizers, live step sequencing with 4 genre presets, 6-track stem mixing, and MPC pad drumming.
+- **Google Sign-In & Cloud Sync**: Firebase Authentication and Firestore real-time progress syncing across devices with strict security rules.
+- **Multi-Format Publication Suite**: Automated compilers providing complete offline and print editions (PDF, EPUB, DOCX, Standalone HTML, and Markdown).
+- **Complete End-to-End Curriculum**: Delivered 28 comprehensive lessons with interactive widgets, chapter quizzes, 3 module capstone labs, and a 20-question certification exam.

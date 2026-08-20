@@ -299,28 +299,47 @@ export const HardwireGlossary: React.FC = () => {
   const filtered = VOCABULARY_LIST.filter((item) => {
     const matchesSearch =
       item.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.definition.toLowerCase().includes(searchTerm.toLowerCase());
+      item.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (item.category && item.category.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (item.streetDefinition && item.streetDefinition.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesMod = selectedModule === 'all' || item.moduleId === selectedModule;
     return matchesSearch && matchesMod;
   });
 
   const playTermSound = (term: string) => {
     soundEngine.init();
-    if (term === 'Sub-Bass' || term === 'Pitch') soundEngine.playBassNote(40, 0.6, 120);
-    else if (term === 'The Pocket' || term === 'Swing') soundEngine.playHiHat(undefined, 100);
-    else soundEngine.playChord([60, 64, 67], 0.6, 100);
+    if (term.includes('Sub-Bass') || term.includes('Pitch') || term.includes('808')) {
+      soundEngine.playBassNote(36, 0.8, 127);
+    } else if (term.includes('The Pocket') || term.includes('Swing') || term.includes('Microtiming')) {
+      soundEngine.playKick();
+      setTimeout(() => soundEngine.playSnare(undefined, 110), 220);
+    } else if (term.includes('Ghost') || term.includes('Transient') || term.includes('Subdivision')) {
+      soundEngine.playHiHat(undefined, 60);
+      setTimeout(() => soundEngine.playHiHat(undefined, 120), 120);
+    } else if (term.includes('Phrygian')) {
+      soundEngine.playChord([60, 61, 63, 65], 0.8, 105);
+    } else if (term.includes('Dorian')) {
+      soundEngine.playChord([60, 62, 63, 65, 69], 0.8, 105);
+    } else if (term.includes('Extended') || term.includes('Triad') || term.includes('Inversion')) {
+      soundEngine.playChord([60, 63, 67, 70, 74], 0.9, 110);
+    } else {
+      soundEngine.playChord([60, 63, 67], 0.7, 100);
+    }
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 md:p-10 rounded-2xl bg-[#FFFFFF] border border-[#E5E1DA] shadow-sm space-y-8 font-sans">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5E1DA] pb-4">
+    <div className="max-w-5xl mx-auto p-6 md:p-10 rounded-2xl bg-[#FFFFFF] dark:bg-[#121214] border border-[#E5E1DA] dark:border-[#26262a] shadow-sm space-y-8 font-sans">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5E1DA] dark:border-[#26262a] pb-6">
         <div>
           <span className="text-[10px] font-bold text-[#C5A059] uppercase tracking-[0.25em]">
-            Reference Compendium
+            Reference Compendium & Appendix
           </span>
-          <h2 className="text-3xl font-serif font-bold text-[#1A1A1A] mt-1">
-            The Hardwire Vocabulary Index
+          <h2 className="text-3xl font-serif font-bold text-[#1A1A1A] dark:text-white mt-1">
+            Master Street-to-DAW Audio Glossary (Terms 01–36)
           </h2>
+          <p className="text-xs text-[#6B655C] dark:text-zinc-400 mt-1">
+            Standardized operational parameters, acoustic physics, and street translations for all 36 core terms.
+          </p>
         </div>
 
         <div className="flex items-center gap-3">
@@ -328,20 +347,20 @@ export const HardwireGlossary: React.FC = () => {
             <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#8B8378]" />
             <input
               type="text"
-              placeholder="Search terminology..."
+              placeholder="Search terms, physics, parameters..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-3 py-1.5 rounded-lg bg-[#F7F3F0] border border-[#E5E1DA] text-xs text-[#1A1A1A] focus:outline-none focus:border-[#C5A059] w-48 font-sans"
+              className="pl-9 pr-3 py-1.5 rounded-lg bg-[#F7F3F0] dark:bg-[#18181b] border border-[#E5E1DA] dark:border-[#2a2a30] text-xs text-[#1A1A1A] dark:text-white focus:outline-none focus:border-[#C5A059] w-56 font-sans"
             />
           </div>
           <select
             value={selectedModule}
             onChange={(e) => setSelectedModule(e.target.value)}
-            className="px-3 py-1.5 rounded-lg bg-[#F7F3F0] border border-[#E5E1DA] text-xs text-[#2D2A26] focus:outline-none font-sans"
+            className="px-3 py-1.5 rounded-lg bg-[#F7F3F0] dark:bg-[#18181b] border border-[#E5E1DA] dark:border-[#2a2a30] text-xs text-[#2D2A26] dark:text-zinc-200 focus:outline-none font-sans"
           >
-            <option value="all">All Modules</option>
+            <option value="all">All Modules (36 Terms)</option>
             <option value="module-1">Module 01: The Pocket</option>
-            <option value="module-2">Module 02: MIDI</option>
+            <option value="module-2">Module 02: MIDI for Dummies</option>
             <option value="module-3">Module 03: The Interplay</option>
           </select>
         </div>
@@ -351,34 +370,72 @@ export const HardwireGlossary: React.FC = () => {
         {filtered.map((item, idx) => (
           <div
             key={idx}
-            className="p-5 rounded-xl bg-[#F7F3F0] border border-[#E5E1DA] hover:border-[#C5A059] transition-all space-y-3"
+            className="p-5 rounded-xl bg-[#F7F3F0] dark:bg-[#161618] border border-[#E5E1DA] dark:border-[#26262a] hover:border-[#C5A059] dark:hover:border-[#C5A059] transition-all space-y-3"
           >
             <div className="flex justify-between items-start">
-              <div>
-                <h4 className="text-lg font-serif font-bold text-[#1A1A1A] flex items-center gap-2">
-                  {item.term}
-                  <button
-                    onClick={() => playTermSound(item.term)}
-                    className="p-1 rounded bg-[#FFFFFF] border border-[#E5E1DA] hover:bg-[#E5E1DA] text-[#C5A059]"
-                    title="Audition"
-                  >
-                    <Volume2 className="w-3.5 h-3.5" />
-                  </button>
-                </h4>
-                <span className="text-[10px] font-mono text-[#C5A059] uppercase">{item.moduleName}</span>
+              <div className="flex items-center gap-2.5">
+                {item.index && (
+                  <span className="text-[11px] font-mono font-bold text-[#C5A059] bg-[#C5A059]/10 px-2 py-0.5 rounded">
+                    #{String(item.index).padStart(2, '0')}
+                  </span>
+                )}
+                <div>
+                  <h4 className="text-base font-serif font-bold text-[#1A1A1A] dark:text-white flex items-center gap-2">
+                    {item.term}
+                    <button
+                      onClick={() => playTermSound(item.term)}
+                      className="p-1 rounded bg-[#FFFFFF] dark:bg-[#202024] border border-[#E5E1DA] dark:border-[#33333a] hover:bg-[#E5E1DA] text-[#C5A059] transition-colors"
+                      title="Audition synthesized acoustic signature"
+                    >
+                      <Volume2 className="w-3.5 h-3.5" />
+                    </button>
+                  </h4>
+                  <span className="text-[10px] font-mono text-[#C5A059] uppercase">{item.moduleName}</span>
+                </div>
               </div>
-              <span className="text-[9px] font-mono bg-[#FFFFFF] border border-[#E5E1DA] px-2 py-0.5 rounded text-[#8B8378]">
-                {item.dawFeature.split(' ')[0]}
-              </span>
+              {item.category && (
+                <span className="text-[9px] font-mono bg-[#FFFFFF] dark:bg-[#202024] border border-[#E5E1DA] dark:border-[#33333a] px-2 py-0.5 rounded text-[#8B8378] dark:text-zinc-400">
+                  {item.category}
+                </span>
+              )}
             </div>
 
-            <p className="text-xs font-serif text-[#4A453E] leading-relaxed">{item.definition}</p>
+            {item.streetDefinition && (
+              <div className="text-xs bg-[#FFFFFF] dark:bg-[#1f1f23] p-2.5 rounded-lg border border-[#E5E1DA]/80 dark:border-[#2c2c34]">
+                <span className="font-mono text-[9px] font-bold uppercase text-[#C5A059] block tracking-wider">
+                  Street Definition:
+                </span>
+                <p className="text-xs font-serif italic text-[#1A1A1A] dark:text-zinc-200 mt-0.5">
+                  "{item.streetDefinition}"
+                </p>
+              </div>
+            )}
 
-            <div className="pt-2 border-t border-[#E5E1DA] text-xs font-serif text-[#4A453E]">
-              <strong className="font-sans text-[10px] uppercase tracking-widest text-[#1A1A1A] block">
-                Street Application:
+            {item.acousticScience && (
+              <div className="text-xs text-[#4A453E] dark:text-zinc-300">
+                <span className="font-mono text-[9px] font-bold uppercase text-[#736B5E] dark:text-zinc-400 block tracking-wider">
+                  Acoustic / DAW Science:
+                </span>
+                <p className="text-xs font-mono text-[#2D2A26] dark:text-zinc-200 mt-0.5">
+                  {item.acousticScience}
+                </p>
+              </div>
+            )}
+
+            <div className="text-xs text-[#4A453E] dark:text-zinc-300">
+              <span className="font-mono text-[9px] font-bold uppercase text-[#736B5E] dark:text-zinc-400 block tracking-wider">
+                Parameter Mapping:
+              </span>
+              <code className="text-[11px] font-mono text-[#C5A059] bg-[#FFFFFF] dark:bg-[#1c1c20] px-1.5 py-0.5 rounded border border-[#E5E1DA] dark:border-[#2a2a32] block mt-0.5 truncate">
+                {item.dawFeature}
+              </code>
+            </div>
+
+            <div className="pt-2 border-t border-[#E5E1DA] dark:border-[#26262a] text-xs font-serif text-[#4A453E] dark:text-zinc-300">
+              <strong className="font-sans text-[9px] uppercase tracking-widest text-[#1A1A1A] dark:text-zinc-200 block">
+                Practical DAW Application:
               </strong>
-              <p className="italic text-[#2D2A26] mt-0.5">{item.practicalApplication}</p>
+              <p className="italic text-[#2D2A26] dark:text-zinc-300 mt-0.5">{item.practicalApplication}</p>
             </div>
           </div>
         ))}

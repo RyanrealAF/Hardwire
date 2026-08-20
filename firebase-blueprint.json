@@ -1,0 +1,72 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile document storing authentication details and metadata",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique Firebase Auth user identifier"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the user"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "URL to user's profile avatar photo"
+        },
+        "lastActiveAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of user's last session activity"
+        }
+      },
+      "required": ["uid"]
+    },
+    "UserProgress": {
+      "title": "UserProgress",
+      "description": "User curriculum progress including completed lessons and last accessed module/lesson state",
+      "type": "object",
+      "properties": {
+        "completedLessons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of completed lesson ID strings"
+        },
+        "lastLessonId": {
+          "type": "string",
+          "description": "ID of the most recently viewed lesson"
+        },
+        "lastModuleId": {
+          "type": "string",
+          "description": "ID of the most recently viewed module"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when progress was last synced"
+        }
+      },
+      "required": ["completedLessons"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "#/entities/UserProfile",
+      "description": "Collection storing user profile data keyed by user auth UID"
+    },
+    "/userProgress/{userId}": {
+      "schema": "#/entities/UserProgress",
+      "description": "Collection storing syllabus completion, last lesson, and last module state keyed by user auth UID"
+    }
+  }
+}

@@ -2,6 +2,9 @@ import React from 'react';
 import { ModuleInfo, LessonId, ModuleId } from '../types';
 import { CURRICULUM_MODULES } from '../data/curriculumData';
 import { BookOpen, CheckCircle, Award, Home, Compass, Music, Sliders, Volume2, Sparkles } from 'lucide-react';
+import { useInternalAdmin } from '../hooks/useInternalAdmin';
+import { AdminDistributionPanel } from './AdminDistributionPanel';
+import { AuthButton } from './AuthButton';
 
 interface SidebarProps {
   currentLessonId: LessonId;
@@ -24,6 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const totalLessons = 28;
   const progressPercent = Math.round((completedLessons.length / totalLessons) * 100);
+  const { isAdmin } = useInternalAdmin();
 
   return (
     <>
@@ -72,6 +76,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <span>Landing Page & MIDI Console</span>
             </button>
           )}
+
+          <div className="mt-3">
+            <AuthButton />
+          </div>
 
           <div className="mt-4 pt-3 border-t border-[#E5E1DA] flex items-center justify-between text-[10px] uppercase tracking-widest text-[#8B8378] font-semibold">
             <span>FEEL &rarr; MAP &rarr; CONTROL</span>
@@ -189,6 +197,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </a>
               </li>
             </ul>
+
+            {/* Hidden Admin Distribution Debug Panel */}
+            {isAdmin && <AdminDistributionPanel />}
           </div>
         </div>
 

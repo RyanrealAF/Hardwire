@@ -410,32 +410,42 @@ The Hardwire Method completely rebuilds musical pedagogy around the physics of d
   });
 
   // =========================================================================
-  // 5. APPENDIX: STREET-TO-DAW GLOSSARY
+  // 5. APPENDIX: MASTER STREET-TO-DAW AUDIO GLOSSARY
   // =========================================================================
   doc.addPage();
   doc.y = 54;
 
-  doc.fontSize(20).font('Helvetica-Bold').fillColor('#1A1A1A').text('APPENDIX: STREET-TO-DAW AUDIO GLOSSARY');
-  doc.fontSize(10).font('Helvetica-Oblique').fillColor('#8B8378').text('35+ Production Terms Translated from Street Instinct to Engineering Coordinates');
+  doc.fontSize(20).font('Helvetica-Bold').fillColor('#1A1A1A').text('APPENDIX: MASTER STREET-TO-DAW AUDIO GLOSSARY');
+  doc.fontSize(10).font('Helvetica-Oblique').fillColor('#8B8378').text('Complete 36-Term Technical Compendium: Street Instinct Translated to DAW Coordinates');
   doc.moveDown(0.5);
   doc.strokeColor('#C5A059').lineWidth(1.5).moveTo(54, doc.y).lineTo(54 + contentWidth, doc.y).stroke();
   doc.moveDown(1);
 
   VOCABULARY_LIST.forEach((item, index) => {
-    if (doc.y > pageHeight - 90) {
+    if (doc.y > pageHeight - 110) {
       doc.addPage();
     }
 
-    doc.fontSize(11).font('Helvetica-Bold').fillColor('#1A1A1A').text(`${index + 1}. ${item.term}`, { continued: true });
-    doc.fontSize(9).font('Courier-Bold').fillColor('#FF5A1F').text(`  [${item.moduleName.toUpperCase()} • ${item.audioCategory.toUpperCase()}]`);
+    const idxStr = item.index ? `#${String(item.index).padStart(2, '0')}` : `${index + 1}.`;
+    doc.fontSize(11).font('Helvetica-Bold').fillColor('#1A1A1A').text(`${idxStr} ${item.term}`, { continued: true });
+    doc.fontSize(8.5).font('Courier-Bold').fillColor('#FF5A1F').text(`  [${(item.category || item.moduleName).toUpperCase()}]`);
 
-    doc.fontSize(9.5).font('Helvetica').fillColor('#2D2A26').text(`Definition: ${item.definition}`, { lineGap: 1.5 });
-    doc.fontSize(9.5).font('Helvetica-Oblique').fillColor('#444444').text(`Practical Application: ${item.practicalApplication}`);
-    doc.fontSize(9).font('Courier').fillColor('#2563EB').text(`DAW Feature / Control: ${item.dawFeature}`);
+    if (item.streetDefinition) {
+      doc.fontSize(9).font('Helvetica-Oblique').fillColor('#C5A059').text(`Street Definition: "${item.streetDefinition}"`);
+    }
 
-    doc.moveDown(0.6);
+    if (item.acousticScience) {
+      doc.fontSize(8.5).font('Courier').fillColor('#0D9488').text(`Acoustic / DAW Science: ${item.acousticScience}`);
+    } else {
+      doc.fontSize(9).font('Helvetica').fillColor('#2D2A26').text(`Definition: ${item.definition}`, { lineGap: 1.5 });
+    }
+
+    doc.fontSize(8.5).font('Courier').fillColor('#2563EB').text(`Parameter Mapping: ${item.dawFeature}`);
+    doc.fontSize(9).font('Helvetica-Oblique').fillColor('#444444').text(`Practical Application: ${item.practicalApplication}`);
+
+    doc.moveDown(0.5);
     doc.strokeColor('#EFECE6').lineWidth(0.5).moveTo(54, doc.y).lineTo(54 + contentWidth, doc.y).stroke();
-    doc.moveDown(0.6);
+    doc.moveDown(0.5);
   });
 
   // =========================================================================

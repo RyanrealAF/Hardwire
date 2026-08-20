@@ -94,9 +94,13 @@ export interface ModuleInfo {
 }
 
 export interface VocabularyTerm {
+  index?: number;
   term: string;
   moduleId: ModuleId;
   moduleName: string;
+  category?: string;
+  streetDefinition?: string;
+  acousticScience?: string;
   definition: string;
   practicalApplication: string;
   dawFeature: string;
@@ -119,4 +123,19 @@ export interface DrumStep {
   hihatVelocity: number;
   snareOffsetMs: number;
   kickOffsetMs: number;
+}
+
+export interface UserProfile {
+  uid: string;
+  displayName: string;
+  email: string | null;
+  photoURL: string | null;
+  lastActiveAt: string;
+}
+
+export interface UserProgress {
+  completedLessons: string[];
+  lastLessonId?: string;
+  lastModuleId?: string;
+  updatedAt?: string;
 }
