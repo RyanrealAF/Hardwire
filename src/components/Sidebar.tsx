@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ModuleInfo, LessonId, ModuleId } from '../types';
 import { CURRICULUM_MODULES } from '../data/curriculumData';
-import { BookOpen, CheckCircle, Award, Home, Compass, Music, Sliders, Volume2, Sparkles } from 'lucide-react';
+import { BookOpen, CheckCircle, Award, Home, Compass, Music, Sliders, Volume2, Sparkles, Download, ExternalLink } from 'lucide-react';
 import { useInternalAdmin } from '../hooks/useInternalAdmin';
 import { AdminDistributionPanel } from './AdminDistributionPanel';
 import { AuthButton } from './AuthButton';
+import { HtmlBookReaderModal } from './HtmlBookReaderModal';
 
 interface SidebarProps {
   currentLessonId: LessonId;
@@ -25,12 +26,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onClose,
   onGoHome
 }) => {
+  const [isHtmlReaderOpen, setIsHtmlReaderOpen] = useState(false);
   const totalLessons = 28;
   const progressPercent = Math.round((completedLessons.length / totalLessons) * 100);
   const { isAdmin } = useInternalAdmin();
 
   return (
     <>
+      <HtmlBookReaderModal
+        isOpen={isHtmlReaderOpen}
+        onClose={() => setIsHtmlReaderOpen(false)}
+      />
+
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
@@ -176,12 +183,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </li>
 
               <li>
+                <button
+                  onClick={() => {
+                    setIsHtmlReaderOpen(true);
+                    onClose();
+                  }}
+                  className="w-full text-left py-2 px-3 rounded-lg transition-all flex items-center gap-2.5 text-[#0D9488] hover:text-[#0F766E] hover:bg-[#FFFFFF]/80 font-medium cursor-pointer"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-[#0D9488]" />
+                  <span className="font-serif text-[13px]">Read HTML eBook</span>
+                </button>
+              </li>
+
+              <li>
                 <a
                   href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
                   download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
                   className="w-full text-left py-2 px-3 rounded-lg transition-all flex items-center gap-2.5 text-[#FF5A1F] hover:text-[#E04B14] hover:bg-[#FFFFFF]/80 font-medium"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Download className="w-3.5 h-3.5 text-[#FF5A1F]" />
                   <span className="font-serif text-[13px]">Printable PDF</span>
                 </a>
               </li>
@@ -192,8 +212,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
                   className="w-full text-left py-2 px-3 rounded-lg transition-all flex items-center gap-2.5 text-[#C5A059] hover:text-[#9A7B38] hover:bg-[#FFFFFF]/80 font-medium"
                 >
-                  <BookOpen className="w-3.5 h-3.5 text-[#C5A059]" />
-                  <span className="font-serif text-[13px]">Download eBook</span>
+                  <Download className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span className="font-serif text-[13px]">Download DOCX</span>
                 </a>
               </li>
             </ul>

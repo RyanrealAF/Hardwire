@@ -27,6 +27,7 @@ import { ModuleId, LessonId } from '../types';
 import { CURRICULUM_MODULES } from '../data/curriculumData';
 import { DownloadMatrixComponent } from './DownloadMatrixComponent';
 import { AuthButton } from './AuthButton';
+import { HtmlBookReaderModal } from './HtmlBookReaderModal';
 
 interface LandingPageProps {
   onEnterCurriculum: (moduleId?: ModuleId, lessonId?: LessonId) => void;
@@ -73,6 +74,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onEnterCurriculum,
   completedLessonsCount
 }) => {
+  // Standalone HTML eBook Reader Modal
+  const [isHtmlReaderOpen, setIsHtmlReaderOpen] = useState<boolean>(false);
+
   // Split cover state
   const [isCoverOpen, setIsCoverOpen] = useState<boolean>(false);
   const [isCoverDone, setIsCoverDone] = useState<boolean>(false);
@@ -821,16 +825,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="text-[10px] text-[#8a888f] w-7 text-right">{masterVol}%</span>
           </div>
 
-          <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#131316] hover:bg-[#232327] border border-[#0D9488]/40 text-xs font-mono text-[#2FD9C4] transition-colors"
-            title="Open Standalone HTML eBook"
+          <button
+            onClick={() => setIsHtmlReaderOpen(true)}
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#131316] hover:bg-[#232327] border border-[#0D9488]/40 text-xs font-mono text-[#2FD9C4] transition-colors cursor-pointer"
+            title="Read Standalone HTML eBook"
           >
             <BookOpen className="w-3.5 h-3.5" />
             <span className="hidden md:inline">HTML eBook</span>
-          </a>
+          </button>
 
           <button
             onClick={closeCover}
@@ -1775,14 +1777,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             Begin Module 01: The Pocket &rarr;
           </button>
           <div className="text-xs font-mono text-[#8a888f] flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a
-              href="/THE_HARDWIRE_METHOD_TEXTBOOK.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#2fd9c4] hover:underline font-bold flex items-center gap-1"
+            <button
+              onClick={() => setIsHtmlReaderOpen(true)}
+              className="text-[#2fd9c4] hover:underline font-bold flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
             >
               <span>Read HTML eBook &rarr;</span>
-            </a>
+            </button>
             <span className="opacity-40">&bull;</span>
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
@@ -1795,7 +1795,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="opacity-40">&bull;</span>
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-              download
+              download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
               className="text-[#ff5a1f] hover:underline font-bold"
               title="Printable 62-Page PDF"
             >
@@ -1804,7 +1804,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="opacity-40">&bull;</span>
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-              download
+              download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
               className="text-[#c5a059] hover:underline font-bold"
             >
               Word (.docx)
@@ -1814,6 +1814,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
         <footer className="landing-footer">Feel it. Name it. See it. Control it.</footer>
       </main>
+
+      <HtmlBookReaderModal
+        isOpen={isHtmlReaderOpen}
+        onClose={() => setIsHtmlReaderOpen(false)}
+      />
     </div>
   );
 };
