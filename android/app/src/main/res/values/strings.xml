@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">The Hardwire Method</string>
+    <string name="title_activity_main">The Hardwire Method</string>
+    <string name="package_name">com.hardwiremethod.app</string>
+    <string name="custom_url_scheme">com.hardwiremethod.app</string>
+</resources>
