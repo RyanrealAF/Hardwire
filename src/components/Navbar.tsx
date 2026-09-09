@@ -112,46 +112,53 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </div>
 
-        {/* Audio Engine Live Switch & PDF / EPUB / HTML / eBook Download */}
+        {/* Audio Engine Live Switch & Download Menu */}
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setIsHtmlReaderOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#0D9488]/40 bg-[#0D9488]/10 text-[#0D9488] hover:bg-[#0D9488]/20 transition-colors text-xs font-semibold font-mono cursor-pointer"
-            title="Read Standalone HTML eBook"
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span className="text-[10px] uppercase tracking-wider font-bold">HTML Book</span>
-          </button>
+          {/* Consolidated Downloads Menu */}
+          <div className="relative group">
+            <button
+              className="px-3 py-1.5 rounded-lg border border-[#E5E1DA] bg-[#F7F3F0] text-[#2D2A26] hover:bg-[#E5E1DA] transition-colors text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
+              title="Download Textbook & Formats"
+            >
+              <Download className="w-3.5 h-3.5 text-[#C5A059]" />
+              <span className="text-[10px] uppercase tracking-wider font-bold hidden sm:inline">Downloads</span>
+            </button>
 
-          <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
-            download="THE_HARDWIRE_METHOD_TEXTBOOK.epub"
-            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 text-[#8B5CF6] hover:bg-[#8B5CF6]/20 transition-colors text-xs font-semibold font-mono"
-            title="Download Consumer EPUB (Apple Books / KDP / Kobo)"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span className="text-[10px] uppercase tracking-wider font-bold">EPUB</span>
-          </a>
-
-          <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-            download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-            className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#FF5A1F]/40 bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F]/20 transition-colors text-xs font-semibold font-mono"
-            title="Download Standalone Printable PDF (62 Pages)"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span className="text-[10px] uppercase tracking-wider font-bold">PDF</span>
-          </a>
-
-          <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-            download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-            className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059]/20 transition-colors text-xs font-semibold font-mono"
-            title="Download Source Word Document (.docx)"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span className="text-[10px] uppercase tracking-wider font-bold">DOCX</span>
-          </a>
+            {/* Dropdown Menu */}
+            <div className="absolute right-0 top-full mt-1 w-48 bg-white border border-[#E5E1DA] rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none group-hover:pointer-events-auto z-50 p-1 font-sans">
+              <button
+                onClick={() => setIsHtmlReaderOpen(true)}
+                className="w-full text-left px-3 py-2 text-xs font-medium text-[#1A1A1A] hover:bg-[#F7F3F0] rounded flex items-center justify-between cursor-pointer"
+              >
+                <span>Read eBook</span>
+                <span className="text-[10px] font-mono text-teal-600 font-bold">HTML</span>
+              </button>
+              <a
+                href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
+                download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
+                className="w-full text-left px-3 py-2 text-xs font-medium text-[#1A1A1A] hover:bg-[#F7F3F0] rounded flex items-center justify-between"
+              >
+                <span>Master PDF</span>
+                <span className="text-[10px] font-mono text-amber-600 font-bold">PDF</span>
+              </a>
+              <a
+                href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+                download="THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+                className="w-full text-left px-3 py-2 text-xs font-medium text-[#1A1A1A] hover:bg-[#F7F3F0] rounded flex items-center justify-between"
+              >
+                <span>eReader File</span>
+                <span className="text-[10px] font-mono text-purple-600 font-bold">EPUB</span>
+              </a>
+              <a
+                href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
+                download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
+                className="w-full text-left px-3 py-2 text-xs font-medium text-[#1A1A1A] hover:bg-[#F7F3F0] rounded flex items-center justify-between"
+              >
+                <span>Word Document</span>
+                <span className="text-[10px] font-mono text-blue-600 font-bold">DOCX</span>
+              </a>
+            </div>
+          </div>
 
           <button
             onClick={toggleMasterSound}
@@ -163,7 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             title={isMuted ? 'Unmute Audio Engine' : 'Audio Engine Active'}
           >
             {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-[#C5A059]" />}
-            <span className="text-[10px] uppercase tracking-wider font-mono">
+            <span className="text-[10px] uppercase tracking-wider font-mono hidden sm:inline">
               {isMuted ? 'Muted' : 'Audio Live'}
             </span>
           </button>
