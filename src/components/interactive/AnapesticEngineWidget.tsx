@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Square, Zap } from 'lucide-react';
 import { soundEngine } from '../../audio/soundEngine';
+import { CrossReferenceCard } from '../CrossReferenceCard';
 
 export const AnapesticEngineWidget: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -122,6 +123,17 @@ export const AnapesticEngineWidget: React.FC = () => {
           <span>Notice how it pulls you across the bar line</span>
         </div>
       </div>
+
+      <CrossReferenceCard
+        reference={{
+          title: 'Anapestic Metrical Architecture',
+          description: 'Explore the deeper theoretical framework behind the anapest and metrical stress in Seuss Book 1.',
+          href: 'https://buildwhilebleeding.com/library/seuss/book-1',
+          label: 'Book 1',
+          category: 'theoretical'
+        }}
+        className="mt-4"
+      />
     </div>
   );
 };

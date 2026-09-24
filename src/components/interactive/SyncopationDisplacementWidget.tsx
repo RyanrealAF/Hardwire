@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Square, ArrowRightLeft } from 'lucide-react';
 import { soundEngine } from '../../audio/soundEngine';
+import { CrossReferenceCard } from '../CrossReferenceCard';
 
 type AccentMode = 'standard' | 'syncopated' | 'anticipated';
 
@@ -168,6 +169,17 @@ export const SyncopationDisplacementWidget: React.FC = () => {
           Compare Standard vs Syncopated vs Anticipated back-to-back.
         </span>
       </div>
+
+      <CrossReferenceCard
+        reference={{
+          title: 'Rhythmic Displacement & Layered Flow',
+          description: 'Seuss provides a theoretical analysis of polyrhythmic flows and metrical displacement.',
+          href: 'https://buildwhilebleeding.com/library/seuss/book-2',
+          label: 'Book 2',
+          category: 'theoretical'
+        }}
+        className="mt-4"
+      />
     </div>
   );
 };
