@@ -7,19 +7,19 @@
     <meta name="description" content="Feel it first. Name it second. Control it third. The zero-fluff music theory curriculum, interactive MIDI workbench, and complete textbook distribution hub for hip-hop and electronic producers." />
     
     <!-- PWA & Mobile Web App Meta -->
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Hardwire Method" />
-    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="./icon-192.png" />
     <link rel="icon" type="image/png" href="/icon-192.png" />
-    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./icons/icon.svg" />
 
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+          navigator.serviceWorker.register('./sw.js')
             .then((reg) => console.log('PWA SW registered:', reg.scope))
             .catch((err) => console.error('PWA SW registration failed:', err));
         });
@@ -50,7 +50,7 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>
 
