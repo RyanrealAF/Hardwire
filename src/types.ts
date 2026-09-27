@@ -66,6 +66,15 @@ export interface Lesson {
     correctIndex: number;
     explanation: string;
   };
+  crossReferences?: CrossReference[];
+}
+
+export interface CrossReference {
+  title: string;
+  description: string;
+  href: string;
+  label?: string;
+  category?: 'theoretical' | 'practical' | 'instructional';
 }
 
 export interface LessonSection {
@@ -77,6 +86,7 @@ export interface LessonSection {
     caption?: string;
   };
   keyTakeaway?: string;
+  crossReferences?: CrossReference[];
 }
 
 export interface ModuleInfo {

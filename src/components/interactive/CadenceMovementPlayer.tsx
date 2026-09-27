@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Square } from 'lucide-react';
 import { soundEngine } from '../../audio/soundEngine';
+import { CrossReferenceCard } from '../CrossReferenceCard';
 
 type CadencePatternType = 'straight' | 'compressed' | 'floating';
 
@@ -244,6 +245,17 @@ export const CadenceMovementPlayer: React.FC = () => {
           Transient density manipulates emotional tension and listener suspense.
         </span>
       </div>
+
+      <CrossReferenceCard
+        reference={{
+          title: 'Metrical Architecture & Cadence',
+          description: 'Seuss explores the metrical architecture and structural framework behind cadence movement.',
+          href: 'https://buildwhilebleeding.com/library/seuss/book-1',
+          label: 'Book 1',
+          category: 'theoretical'
+        }}
+        className="mt-4"
+      />
     </div>
   );
 };

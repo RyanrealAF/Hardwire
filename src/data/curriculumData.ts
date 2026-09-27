@@ -334,6 +334,15 @@ When you master the anapestic foot, you can make an 80 BPM slow beat feel faster
         moduleId: 'module-1',
         lessonNumber: 5,
         title: 'The Pocket',
+        crossReferences: [
+          {
+            title: 'The Metrical Anchor Across Genres',
+            description: 'Seuss presents a theoretical framework for applying the metrical anchor across stylistic genres.',
+            href: 'https://buildwhilebleeding.com/library/seuss/book-4',
+            label: 'Book 4',
+            category: 'theoretical'
+          }
+        ],
         subtitle: 'Defining the Pocket & Millisecond Offsets',
         coreQuestion: 'Why does the same beat feel aggressive in Drill, natural in Pop, and laid-back in Boom-Bap?',
         summary:
@@ -534,6 +543,15 @@ Landing a heavy rhyming syllable on the "a" of Beat 4 (one sixteenth note before
         moduleId: 'module-1',
         lessonNumber: 8,
         title: 'Tempo Versus Perceived Speed',
+        crossReferences: [
+          {
+            title: 'Rhyme, Density & Semantic Encoding',
+            description: 'Seuss explores the relationship between rhyme, syllabic density, and semantic encoding in metrical structures.',
+            href: 'https://buildwhilebleeding.com/library/seuss/book-3',
+            label: 'Book 3',
+            category: 'theoretical'
+          }
+        ],
         subtitle: 'Separating Math from Psychology',
         coreQuestion: 'Why can an 85 BPM Boom-Bap beat feel faster and more frantic than a 140 BPM Trap song?',
         summary:
@@ -594,6 +612,15 @@ Psychological Result: The track feels spacious, relaxed, heavy, and slow.`
         moduleId: 'module-1',
         lessonNumber: 'Capstone',
         title: 'Module 1 Capstone: Build a Pocket',
+        crossReferences: [
+          {
+            title: 'Rhythmic Transfer & Pedagogy',
+            description: 'Explore the theoretical framework for teaching rhythm, workshop structure, and curriculum transfer in Seuss Book 5.',
+            href: 'https://buildwhilebleeding.com/library/seuss/book-5',
+            label: 'Book 5',
+            category: 'instructional'
+          }
+        ],
         subtitle: 'Mastering Rhythmic Placement Across 8 Bars',
         coreQuestion: 'Can you hear, describe, perform, and intentionally manipulate rhythmic placement from scratch?',
         summary:
@@ -1868,6 +1895,15 @@ Music creates emotion by manipulating psychological expectation:
         moduleId: 'module-3',
         lessonNumber: 'Capstone',
         title: 'Module 3 Capstone: Break the Grid Without Losing the Beat',
+        crossReferences: [
+          {
+            title: 'Rhythmic Transfer & Workshop Pedagogy',
+            description: 'Explore the theoretical framework for teaching rhythm, workshop structure, and curriculum transfer in Seuss Book 5.',
+            href: 'https://buildwhilebleeding.com/library/seuss/book-5',
+            label: 'Book 5',
+            category: 'instructional'
+          }
+        ],
         subtitle: 'The Three-Version Production Audit',
         coreQuestion: 'Can you deliberately manipulate timing, velocity, swing, and microtiming while preserving structure?',
         summary:

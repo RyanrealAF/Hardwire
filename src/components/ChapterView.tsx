@@ -30,6 +30,7 @@ import {
   HardwireGlossary
 } from './CapstonesAndAssessments';
 import { CheckCircle2, ChevronRight, HelpCircle, Laptop, Wrench, Sparkles, BookOpen, ArrowLeft, ArrowRight } from 'lucide-react';
+import { CrossReferenceCard } from './CrossReferenceCard';
 
 interface ChapterViewProps {
   lesson: Lesson;
@@ -218,9 +219,26 @@ export const ChapterView: React.FC<ChapterViewProps> = ({
                 </p>
               </div>
             )}
+
+            {section.crossReferences && section.crossReferences.length > 0 && (
+              <div className="mt-4 space-y-3 pt-2">
+                {section.crossReferences.map((ref, i) => (
+                  <CrossReferenceCard key={i} reference={ref} />
+                ))}
+              </div>
+            )}
           </article>
         ))}
       </div>
+
+      {/* Lesson-level Cross References */}
+      {lesson.crossReferences && lesson.crossReferences.length > 0 && (
+        <div className="space-y-3">
+          {lesson.crossReferences.map((ref, i) => (
+            <CrossReferenceCard key={i} reference={ref} />
+          ))}
+        </div>
+      )}
 
       {/* DAW Tool Mapping Card (Editorial Studio Reference) */}
       {lesson.toolMapping && (
