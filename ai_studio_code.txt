@@ -1,0 +1,77 @@
+# Build While Bleeding — Multi-Repository Ecosystem Architecture & Fixes
+
+This document details the configuration, routing mechanisms, discovered link issues, and suggested changes for each repository in the **Build While Bleeding** network.
+
+---
+
+## 1. `BuildWhileBleeding` (Master Umbrella)
+- **Repository**: [`RyanrealAF/buildwhilebleeding`](https://github.com/RyanrealAF/buildwhilebleeding)
+- **Production Host**: `https://buildwhilebleeding.com`
+- **Deployment Platform**: Cloudflare Pages (Advanced Mode using `public/_worker.js`)
+- **Role**: Front door, archive ledger, and reverse-proxy gateway for all sub-territories.
+
+### Issues Identified & Fixed
+1. `public/_worker.js` previously only mapped `/hardwire` and `/mosaic`. Visiting `/the-leak-report` or `/cartography` fell through to `env.ASSETS.fetch()`, returning the root landing page and breaking JS bundle execution.
+2. Any subpath requesting `sw.js` could cause cache pollution across projects.
+3. **Fix Applied**: `PROJECTS` dictionary expanded to cover `/the-leak-report`, `/theleakreport`, `/cartography`, and `/library/seuss`, with a universal `sw.js` no-op interceptor.
+
+---
+
+## 2. `Hardwire`
+- **Repository**: [`RyanrealAF/Hardwire`](https://github.com/RyanrealAF/Hardwire)
+- **Production Host**: `https://the-hardwire-method.pages.dev`
+- **Subpath Route**: `/hardwire/*`
+- **Tech Stack**: Vite + React + Tailwind CSS + PWA
+
+### Issues & Suggestions
+- **Vite Base**: Keep `base: './'` in `vite.config.ts`. This ensures bundled assets (`./assets/index-*.js`) resolve relative to `/hardwire/` rather than requesting the root domain `/assets/`.
+- **Service Worker**: In `index.html`, register the service worker with scoped path `./sw.js` so it does not intercept requests for other paths under `buildwhilebleeding.com`.
+
+---
+
+## 3. `Theleakreport`
+- **Repository**: [`RyanrealAF/Theleakreport`](https://github.com/RyanrealAF/Theleakreport)
+- **Production Host**: `https://the-leak-report.pages.dev` (also aliased at `theleakreport.pages.dev`)
+- **Subpath Route**: `/the-leak-report/*`
+- **Tech Stack**: Vite + React + Tailwind CSS
+
+### Issues & Suggestions
+- **Vite Base Configuration**: Verify that `base: './'` is defined in `vite.config.ts`.
+- **Trailing Slash Sensitivity**: Because HTML assets load via relative `./assets/...`, requests without a trailing slash (`/the-leak-report`) must redirect to `/the-leak-report/` so the browser resolves assets relative to `/the-leak-report/assets/` rather than the domain root. (This 308 redirect is now enforced in `public/_worker.js`).
+
+---
+
+## 4. `Cartography`
+- **Repository**: [`RyanrealAF/Cartography`](https://github.com/RyanrealAF/Cartography)
+- **Production Host**: `https://cartography.pages.dev`
+- **Subpath Route**: `/cartography/*`
+- **Tech Stack**: Vanilla HTML5 + CSS + JavaScript
+
+### Issues & Suggestions
+- **Asset Links**: Ensure all CSS, JS, and PDF paths in `index.html` remain document-relative (e.g., `styles.css`, `app.js`, `The%20RyanrealAF%20Codex_...pdf`) and do not use root-relative slashes (`/styles.css`), ensuring seamless rendering whether visited directly or through `/cartography/`.
+
+---
+
+## 5. `The_Mosaic_Theory`
+- **Repository**: [`RyanrealAF/The_Mosaic_Theory`](https://github.com/RyanrealAF/The_Mosaic_Theory)
+- **Production Host**: `https://the-mosaic-theory.pages.dev`
+- **Subpath Route**: `/mosaic/*`
+- **Tech Stack**: Vite + React
+
+### Issues & Suggestions
+- Verified operational on both `https://the-mosaic-theory.pages.dev` and `https://buildwhilebleeding.com/mosaic/`. Ensure relative chunk loading is maintained during new builds.
+
+---
+
+## 6. `Seuss`
+- **Repository**: [`RyanrealAF/Seuss`](https://github.com/RyanrealAF/Seuss)
+- **Production Host**: Currently served via raw CDN (`raw.githack.com`)
+- **Subpath Route**: `/library/seuss/*`
+- **Tech Stack**: Static HTML, CSS, JavaScript, PDF collection
+
+### Issues & Suggestions
+1. **Create Cloudflare Pages Deployment**:
+   - Connect `RyanrealAF/Seuss` to Cloudflare Pages (e.g. `the-seuss-library.pages.dev`).
+   - Root directory: `/`, Build command: None.
+2. **Eliminate CDN Dependency**:
+   - Once the Pages deployment is active, point `PROJECTS["/library/seuss"]` in `public/_worker.js` directly to the new `.pages.dev` domain to provide high-speed, direct PDF downloads without third-party CDN rate limits.
