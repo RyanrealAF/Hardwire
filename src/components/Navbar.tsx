@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       />
 
       <header className="sticky top-0 z-30 bg-[#FDFCFB]/95 backdrop-blur-md border-b border-[#E5E1DA] px-4 md:px-8 py-3.5 flex items-center justify-between font-sans">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3"><a href="https://buildwhilebleeding.com/" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center px-3 py-1.5 rounded-lg border border-[#E5E1DA] text-xs font-bold text-[#1A1A1A] hover:bg-[#F7F3F0] transition-colors">← Build While Bleeding</a>
           <button
             onClick={onToggleSidebar}
             className="p-2 rounded-lg bg-[#F7F3F0] border border-[#E5E1DA] text-[#2D2A26] lg:hidden hover:bg-[#E5E1DA]/50 transition-colors cursor-pointer"
@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
+            href="./THE_HARDWIRE_METHOD_TEXTBOOK.epub"
             download="THE_HARDWIRE_METHOD_TEXTBOOK.epub"
             className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 text-[#8B5CF6] hover:bg-[#8B5CF6]/20 transition-colors text-xs font-semibold font-mono"
             title="Download Consumer EPUB (Apple Books / KDP / Kobo)"
@@ -134,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
+            href="./THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
             download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
             className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#FF5A1F]/40 bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F]/20 transition-colors text-xs font-semibold font-mono"
             title="Download Standalone Printable PDF (62 Pages)"
@@ -144,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           <a
-            href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
+            href="./THE_HARDWIRE_METHOD_TEXTBOOK.docx"
             download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
             className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#C5A059]/40 bg-[#C5A059]/10 text-[#C5A059] hover:bg-[#C5A059]/20 transition-colors text-xs font-semibold font-mono"
             title="Download Source Word Document (.docx)"
