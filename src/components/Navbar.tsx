@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       />
 
       <header className="sticky top-0 z-30 bg-[#FDFCFB]/95 backdrop-blur-md border-b border-[#E5E1DA] px-4 md:px-8 py-3.5 flex items-center justify-between font-sans">
-        <div className="flex items-center gap-3"><a href="https://buildwhilebleeding.com/" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center px-3 py-1.5 rounded-lg border border-[#E5E1DA] text-xs font-bold text-[#1A1A1A] hover:bg-[#F7F3F0] transition-colors">← Build While Bleeding</a>
+        <div className="flex items-center gap-3"><a href="https://buildwhilebleeding.com/" target="_blank" rel="noopener noreferrer" className="flex items-center px-3 py-1.5 rounded-lg border border-[#E5E1DA] text-xs font-bold text-[#1A1A1A] hover:bg-[#F7F3F0] transition-colors">← Build While Bleeding</a>
           <button
             onClick={onToggleSidebar}
             className="p-2 rounded-lg bg-[#F7F3F0] border border-[#E5E1DA] text-[#2D2A26] lg:hidden hover:bg-[#E5E1DA]/50 transition-colors cursor-pointer"

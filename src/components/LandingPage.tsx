@@ -108,12 +108,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
   // Stem Mixer Track States
   const [stems, setStems] = useState<StemTrack[]>([
-    { id: 'vox', name: 'VOX / CADENCE', role: 'Syllabic Delivery & Accents', color: '#ff5a1f', volume: 85, isMuted: false, isSolo: false, meterLevel: 0 },
-    { id: 'bass', name: '808 SUB BASS', role: '38Hz - 55Hz Pitch Slide', color: '#e0a030', volume: 90, isMuted: false, isSolo: false, meterLevel: 0 },
+    { id: 'vox', name: 'VOX / CADENCE', role: 'Syllabic Delivery & Accents', color: '#C2332B', volume: 85, isMuted: false, isSolo: false, meterLevel: 0 },
+    { id: 'bass', name: '808 SUB BASS', role: '38Hz - 55Hz Pitch Slide', color: '#C5A36A', volume: 90, isMuted: false, isSolo: false, meterLevel: 0 },
     { id: 'kick', name: 'KICK PUNCH', role: '90Hz Transient Knocker', color: '#2fd9c4', volume: 85, isMuted: false, isSolo: false, meterLevel: 0 },
-    { id: 'snare', name: 'SNARE / CLAP', role: '2.5kHz Crisp Snap', color: '#ece7dd', volume: 80, isMuted: false, isSolo: false, meterLevel: 0 },
-    { id: 'hihat', name: 'MPC HI-HATS', role: '16th Swing Micro-Shuffles', color: '#8a888f', volume: 75, isMuted: false, isSolo: false, meterLevel: 0 },
-    { id: 'keys', name: 'RHODES KEYS', role: 'Minor 9th Neo-Soul Voicings', color: '#ff5a1f', volume: 80, isMuted: false, isSolo: false, meterLevel: 0 }
+    { id: 'snare', name: 'SNARE / CLAP', role: '2.5kHz Crisp Snap', color: '#E7E0D4', volume: 80, isMuted: false, isSolo: false, meterLevel: 0 },
+    { id: 'hihat', name: 'MPC HI-HATS', role: '16th Swing Micro-Shuffles', color: '#B9BDC2', volume: 75, isMuted: false, isSolo: false, meterLevel: 0 },
+    { id: 'keys', name: 'RHODES KEYS', role: 'Minor 9th Neo-Soul Voicings', color: '#C2332B', volume: 80, isMuted: false, isSolo: false, meterLevel: 0 }
   ]);
 
   const [midiLog, setMidiLog] = useState<string[]>([
@@ -148,7 +148,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       swing: 62,
       dragMs: 40,
       tagline: 'Heavy MPC 3000 swing, snappy vinyl snares, low-pass Rhodes chords.',
-      accentColor: '#ff5a1f',
+      accentColor: '#C2332B',
       desc: 'The unshakeable backbone of classic hip-hop. Pocket drag +40ms behind the grid line with lazy unquantized snare drag.',
       subdivisionStyle: 'Heavy 16th swing with delayed snare ghost hits'
     },
@@ -168,7 +168,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       swing: 68,
       dragMs: 48,
       tagline: 'Fluttering tape saturation, minor 9th chords, lazy unquantized bounce.',
-      accentColor: '#e0a030',
+      accentColor: '#C5A36A',
       desc: 'Relaxed introspective groove built on microtiming humanization, vinyl surface crackle, and rootless jazz harmony.',
       subdivisionStyle: 'Extreme 68% swing with soft velocity ghost tapers'
     },
@@ -178,7 +178,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       swing: 54,
       dragMs: -12,
       tagline: 'Sliding 808 pitch ramps, anticipated offbeat snares (hits on 3 & 8).',
-      accentColor: '#ff5a1f',
+      accentColor: '#C2332B',
       desc: 'Aggressive syncopation that skips the downbeat and attacks the offbeat sixteenths with sliding pitch envelopes.',
       subdivisionStyle: 'Syncopated 3rd & 8th sixteenth accents with pitch glides'
     }
@@ -188,25 +188,25 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
   // MPC 16-Pad Grid Mapping
   const MPC_PADS: PadDefinition[] = [
-    { id: 0, label: '808 SUB', sub: 'C1 (36Hz Sine)', midi: 36, type: 'bass', color: '#ff5a1f', keyHint: '1' },
-    { id: 1, label: '808 GLIDE', sub: 'D1 (45Hz Saw)', midi: 38, type: 'bass', color: '#ff5a1f', keyHint: '2' },
+    { id: 0, label: '808 SUB', sub: 'C1 (36Hz Sine)', midi: 36, type: 'bass', color: '#C2332B', keyHint: '1' },
+    { id: 1, label: '808 GLIDE', sub: 'D1 (45Hz Saw)', midi: 38, type: 'bass', color: '#C2332B', keyHint: '2' },
     { id: 2, label: 'KICK PUNCH', sub: 'C1 (90Hz Thump)', midi: 36, type: 'kick', color: '#2fd9c4', keyHint: '3' },
     { id: 3, label: 'KICK BOUNCE', sub: 'B0 (60Hz Low)', midi: 35, type: 'kick', color: '#2fd9c4', keyHint: '4' },
 
-    { id: 4, label: 'FAT SNARE', sub: 'D2 (190Hz Tone)', midi: 38, type: 'snare', color: '#ece7dd', keyHint: 'Q' },
-    { id: 5, label: 'RIMSHOT', sub: 'C#2 (260Hz Snap)', midi: 37, type: 'snare', color: '#ece7dd', keyHint: 'W' },
-    { id: 6, label: 'CLAP STACK', sub: 'D#2 (Layered)', midi: 39, type: 'snare', color: '#ece7dd', keyHint: 'E' },
-    { id: 7, label: 'GHOST SNAP', sub: 'E2 (Low Vel)', midi: 40, type: 'snare', color: '#ece7dd', keyHint: 'R' },
+    { id: 4, label: 'FAT SNARE', sub: 'D2 (190Hz Tone)', midi: 38, type: 'snare', color: '#E7E0D4', keyHint: 'Q' },
+    { id: 5, label: 'RIMSHOT', sub: 'C#2 (260Hz Snap)', midi: 37, type: 'snare', color: '#E7E0D4', keyHint: 'W' },
+    { id: 6, label: 'CLAP STACK', sub: 'D#2 (Layered)', midi: 39, type: 'snare', color: '#E7E0D4', keyHint: 'E' },
+    { id: 7, label: 'GHOST SNAP', sub: 'E2 (Low Vel)', midi: 40, type: 'snare', color: '#E7E0D4', keyHint: 'R' },
 
-    { id: 8, label: 'TIGHT HAT', sub: 'F#2 (8kHz Band)', midi: 42, type: 'hihat', color: '#8a888f', keyHint: 'A' },
-    { id: 9, label: 'OPEN HAT', sub: 'A#2 (Sustain)', midi: 46, type: 'hihat', color: '#8a888f', keyHint: 'S' },
-    { id: 10, label: 'TRIPLET HAT', sub: 'F#2 (1/8T Roll)', midi: 42, type: 'hihat', color: '#8a888f', keyHint: 'D' },
-    { id: 11, label: 'PERC SHAKER', sub: 'F2 (Vinyl Wood)', midi: 41, type: 'hihat', color: '#8a888f', keyHint: 'F' },
+    { id: 8, label: 'TIGHT HAT', sub: 'F#2 (8kHz Band)', midi: 42, type: 'hihat', color: '#B9BDC2', keyHint: 'A' },
+    { id: 9, label: 'OPEN HAT', sub: 'A#2 (Sustain)', midi: 46, type: 'hihat', color: '#B9BDC2', keyHint: 'S' },
+    { id: 10, label: 'TRIPLET HAT', sub: 'F#2 (1/8T Roll)', midi: 42, type: 'hihat', color: '#B9BDC2', keyHint: 'D' },
+    { id: 11, label: 'PERC SHAKER', sub: 'F2 (Vinyl Wood)', midi: 41, type: 'hihat', color: '#B9BDC2', keyHint: 'F' },
 
-    { id: 12, label: 'C MINOR 9', sub: 'C3/Eb3/G3/Bb3', midi: 60, type: 'chord', color: '#ff5a1f', keyHint: 'Z' },
+    { id: 12, label: 'C MINOR 9', sub: 'C3/Eb3/G3/Bb3', midi: 60, type: 'chord', color: '#C2332B', keyHint: 'Z' },
     { id: 13, label: 'F MINOR 7', sub: 'F3/Ab3/C4/Eb4', midi: 65, type: 'chord', color: '#2fd9c4', keyHint: 'X' },
-    { id: 14, label: 'G DOM 7b9', sub: 'G3/B3/D4/F4', midi: 67, type: 'chord', color: '#ff5a1f', keyHint: 'C' },
-    { id: 15, label: 'VOCAL CHOP', sub: 'VOX ("YEAH")', midi: 88, type: 'chord', color: '#ece7dd', keyHint: 'V' }
+    { id: 14, label: 'G DOM 7b9', sub: 'G3/B3/D4/F4', midi: 67, type: 'chord', color: '#C2332B', keyHint: 'C' },
+    { id: 15, label: 'VOCAL CHOP', sub: 'VOX ("YEAH")', midi: 88, type: 'chord', color: '#E7E0D4', keyHint: 'V' }
   ];
 
   const logMidiEvent = (msg: string) => {
@@ -480,11 +480,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     ];
 
     const render = () => {
-      ctx.fillStyle = '#0a0a0b';
+      ctx.fillStyle = '#11100E';
       ctx.fillRect(0, 0, width, height);
 
       // Grid vertical lanes
-      ctx.strokeStyle = '#232327';
+      ctx.strokeStyle = '#3a362f';
       ctx.lineWidth = 1;
       for (let i = 1; i < lanesCount; i++) {
         const x = i * laneWidth;
@@ -495,7 +495,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       }
 
       // Horizontal subtle measure bars
-      ctx.strokeStyle = '#18181c';
+      ctx.strokeStyle = '#171512';
       for (let y = 0; y < height; y += 40) {
         ctx.beginPath();
         ctx.moveTo(0, y);
@@ -510,10 +510,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         const bh = b.hRatio * (height * 0.52);
         const by = height - bh;
 
-        ctx.fillStyle = '#131316';
+        ctx.fillStyle = '#171512';
         ctx.fillRect(bx, by, bw, bh);
 
-        ctx.strokeStyle = '#37373d';
+        ctx.strokeStyle = '#3a362f';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(bx + bw / 2, by);
@@ -521,7 +521,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         ctx.stroke();
 
         if (isEngineActive && idx % 2 === currentStep % 2) {
-          ctx.fillStyle = '#ff5a1f';
+          ctx.fillStyle = '#C2332B';
           ctx.beginPath();
           ctx.arc(bx + bw / 2, by - 16, 2.5, 0, Math.PI * 2);
           ctx.fill();
@@ -535,7 +535,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             const wy = by + 10 + r * 13;
             const isLit = (idx + r + c + currentStep) % 3 === 0;
 
-            ctx.fillStyle = isEngineActive && isLit ? '#ff5a1f' : '#232327';
+            ctx.fillStyle = isEngineActive && isLit ? '#C2332B' : '#3a362f';
             ctx.fillRect(wx, wy, 4, 5);
           }
         }
@@ -558,7 +558,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         ctx.roundRect(px, p.y, pw, p.length, 3);
         ctx.fill();
 
-        ctx.fillStyle = '#0a0a0b';
+        ctx.fillStyle = '#11100E';
         ctx.font = 'bold 9px "JetBrains Mono", monospace';
         ctx.fillText(p.pitchName, px + 3, p.y + 13);
         ctx.restore();
@@ -577,7 +577,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       }
 
       // Bottom Hit Zone Line
-      ctx.strokeStyle = isEngineActive ? '#ff5a1f' : '#37373d';
+      ctx.strokeStyle = isEngineActive ? '#C2332B' : '#3a362f';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(0, height - 15);
@@ -585,14 +585,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       ctx.stroke();
 
       if (isEngineActive) {
-        ctx.fillStyle = 'rgba(255, 90, 31, 0.18)';
+        ctx.fillStyle = 'rgba(194, 51, 43, 0.18)';
         ctx.fillRect(0, height - 18, width, 6);
       }
 
       // Step Playhead Bar
       if (isEngineActive) {
         const playheadX = (currentStep / 16) * width;
-        ctx.strokeStyle = '#ece7dd';
+        ctx.strokeStyle = '#E7E0D4';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(playheadX, 0);
@@ -626,11 +626,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       const w = (canvas.width = canvas.parentElement?.clientWidth || 300);
       const h = (canvas.height = 70);
 
-      ctx.fillStyle = '#0a0a0b';
+      ctx.fillStyle = '#11100E';
       ctx.fillRect(0, 0, w, h);
 
       if (!analyser || !isEngineActive) {
-        ctx.strokeStyle = '#232327';
+        ctx.strokeStyle = '#3a362f';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(0, h / 2);
@@ -648,7 +648,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
       for (let i = 0; i < bufferLength; i++) {
         const barHeight = (dataArray[i] / 255) * (h - 6);
-        const hue = i < 8 ? '#ff5a1f' : i < 32 ? '#2fd9c4' : '#ece7dd';
+        const hue = i < 8 ? '#C2332B' : i < 32 ? '#2fd9c4' : '#E7E0D4';
 
         ctx.fillStyle = hue;
         ctx.fillRect(x, h - barHeight, barWidth - 1, barHeight);
@@ -751,7 +751,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0b] text-[#ece7dd] font-work selection:bg-[#ff5a1f] selection:text-[#0a0a0b] relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#11100E] text-[#E7E0D4] font-work selection:bg-[#C2332B] selection:text-[#11100E] relative overflow-x-hidden">
       {/* Transient Seam Flash Line */}
       <div id="seam" className={seamFlash ? 'flash' : ''} />
 
@@ -791,28 +791,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* ========================================================================= */}
       {/* TOP COMPANION BAR (Deep-Link, Transport & Audio Master) */}
       {/* ========================================================================= */}
-      <header className="border-b border-[#232327] bg-[#0a0a0b]/95 backdrop-blur-md px-4 sm:px-8 py-3 flex items-center justify-between sticky top-0 z-40">
+      <header className="border-b border-[#3a362f] bg-[#11100E]/95 backdrop-blur-md px-4 sm:px-8 py-3 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded bg-[#ff5a1f] text-[#0a0a0b] flex items-center justify-center font-shoulders font-black text-lg shadow-sm">
+          <a href="https://buildwhilebleeding.com/" target="_blank" rel="noopener noreferrer" className="hidden sm:flex items-center text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#C5A36A] hover:text-[#E7E0D4] transition-colors">← Build While Bleeding</a>
+          <div className="w-8 h-8 rounded-none bg-[#C2332B] text-[#11100E] flex items-center justify-center font-shoulders font-black text-lg shadow-sm">
             HW
           </div>
           <div>
-            <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#ff5a1f] block leading-none">
+            <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#C2332B] block leading-none">
               THE HARDWIRE METHOD
             </span>
-            <span className="text-xs font-mono text-[#8a888f]">Music Theory for the Streets</span>
+            <span className="text-xs font-mono text-[#B9BDC2]">Music Theory for the Streets</span>
           </div>
         </div>
 
         {/* Global Master Audio Controls */}
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded bg-[#131316] border border-[#232327] text-xs font-mono">
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-none bg-[#171512] border border-[#3a362f] text-xs font-mono">
             <button
               onClick={handleToggleMute}
-              className="text-[#8a888f] hover:text-[#ece7dd] transition-colors"
+              className="text-[#B9BDC2] hover:text-[#E7E0D4] transition-colors"
               title="Toggle Audio Engine Mute"
             >
-              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-[#ff5a1f]" /> : <Volume2 className="w-3.5 h-3.5" />}
+              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-[#C2332B]" /> : <Volume2 className="w-3.5 h-3.5" />}
             </button>
             <input
               type="range"
@@ -820,14 +821,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               max="100"
               value={masterVol}
               onChange={(e) => handleMasterVol(Number(e.target.value))}
-              className="w-16 h-1 bg-[#232327] accent-[#ff5a1f] cursor-pointer"
+              className="w-16 h-1 bg-[#3a362f] accent-[#C2332B] cursor-pointer"
             />
-            <span className="text-[10px] text-[#8a888f] w-7 text-right">{masterVol}%</span>
+            <span className="text-[10px] text-[#B9BDC2] w-7 text-right">{masterVol}%</span>
           </div>
 
           <button
             onClick={() => setIsHtmlReaderOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#131316] hover:bg-[#232327] border border-[#0D9488]/40 text-xs font-mono text-[#2FD9C4] transition-colors cursor-pointer"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-[#171512] hover:bg-[#3a362f] border border-[#C5A36A]/40 text-xs font-mono text-[#C5A36A] transition-colors cursor-pointer"
             title="Read Standalone HTML eBook"
           >
             <BookOpen className="w-3.5 h-3.5" />
@@ -836,7 +837,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
           <button
             onClick={closeCover}
-            className="px-2.5 py-1.5 rounded bg-[#131316] hover:bg-[#232327] border border-[#37373d] text-xs font-mono text-[#8a888f] hover:text-[#ece7dd] flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-2.5 py-1.5 rounded-none bg-[#171512] hover:bg-[#3a362f] border border-[#3a362f] text-xs font-mono text-[#B9BDC2] hover:text-[#E7E0D4] flex items-center gap-1.5 transition-colors cursor-pointer"
             title="Show Cover Curtain"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -845,7 +846,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
           <button
             onClick={() => onEnterCurriculum('module-1', 'm1-l1')}
-            className="px-4 py-1.5 rounded text-xs font-mono font-bold uppercase tracking-wider bg-[#ff5a1f] hover:bg-[#ff723f] text-[#0a0a0b] flex items-center gap-2 transition-all cursor-pointer shadow-sm"
+            className="px-4 py-1.5 rounded-none text-xs font-mono font-bold uppercase tracking-wider bg-[#C2332B] hover:bg-[#C2332B] text-[#11100E] flex items-center gap-2 transition-all cursor-pointer shadow-sm"
           >
             <BookOpen className="w-3.5 h-3.5" />
             <span>Enter Textbook</span>
@@ -874,16 +875,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* ======================================================================= */}
         {/* INTERACTIVE MULTI-TRACK URBAN STEM WORKBENCH */}
         {/* ======================================================================= */}
-        <section className="mt-12 rounded-2xl bg-[#131316] border border-[#37373d] p-5 sm:p-7 space-y-6 shadow-2xl relative overflow-hidden">
+        <section className="mt-12 rounded-none bg-[#171512] border border-[#3a362f] p-5 sm:p-7 space-y-6 shadow-2xl relative overflow-hidden">
           {/* Header Control Strip */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#232327] pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#3a362f] pb-4">
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={handleToggleEngine}
-                className={`px-5 py-2 rounded font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all shadow-md cursor-pointer ${
+                className={`px-5 py-2 rounded-none font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all shadow-md cursor-pointer ${
                   isEngineActive
-                    ? 'bg-[#ff5a1f] hover:bg-[#ff723f] text-[#0a0a0b]'
-                    : 'bg-[#232327] hover:bg-[#37373d] text-[#ece7dd]'
+                    ? 'bg-[#C2332B] hover:bg-[#C2332B] text-[#11100E]'
+                    : 'bg-[#3a362f] hover:bg-[#3a362f] text-[#E7E0D4]'
                 }`}
               >
                 {isEngineActive ? (
@@ -893,34 +894,34 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </>
                 ) : (
                   <>
-                    <Play className="w-3.5 h-3.5 fill-current text-[#ff5a1f]" />
+                    <Play className="w-3.5 h-3.5 fill-current text-[#C2332B]" />
                     <span>Play MIDI Stream</span>
                   </>
                 )}
               </button>
 
-              <div className="flex items-center gap-2 font-mono text-xs text-[#8a888f] bg-[#0a0a0b] px-3 py-1.5 rounded border border-[#232327]">
-                <Activity className="w-3.5 h-3.5 text-[#ff5a1f]" />
+              <div className="flex items-center gap-2 font-mono text-xs text-[#B9BDC2] bg-[#11100E] px-3 py-1.5 rounded-none border border-[#3a362f]">
+                <Activity className="w-3.5 h-3.5 text-[#C2332B]" />
                 <span>{bpm} BPM</span>
                 <span className="opacity-40">|</span>
                 <span>SWING: {swingPercent}%</span>
                 <span className="opacity-40">|</span>
-                <span className={pocketOffsetMs > 0 ? 'text-[#ff5a1f]' : pocketOffsetMs < 0 ? 'text-[#2fd9c4]' : ''}>
+                <span className={pocketOffsetMs > 0 ? 'text-[#C2332B]' : pocketOffsetMs < 0 ? 'text-[#C5A36A]' : ''}>
                   DRAG: {pocketOffsetMs > 0 ? `+${pocketOffsetMs}` : pocketOffsetMs}ms
                 </span>
               </div>
             </div>
 
             {/* Vibe Presets */}
-            <div className="flex items-center gap-1.5 p-1 bg-[#0a0a0b] rounded border border-[#232327] text-xs font-mono">
+            <div className="flex items-center gap-1.5 p-1 bg-[#11100E] rounded-none border border-[#3a362f] text-xs font-mono">
               {(['boombap', 'trap', 'lofi', 'drill'] as UrbanVibe[]).map((vibe) => (
                 <button
                   key={vibe}
                   onClick={() => handleSelectVibe(vibe)}
-                  className={`px-3 py-1 rounded capitalize font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-none capitalize font-bold transition-all cursor-pointer ${
                     activeVibe === vibe
-                      ? 'bg-[#ff5a1f] text-[#0a0a0b]'
-                      : 'text-[#8a888f] hover:text-[#ece7dd]'
+                      ? 'bg-[#C2332B] text-[#11100E]'
+                      : 'text-[#B9BDC2] hover:text-[#E7E0D4]'
                   }`}
                 >
                   {vibe === 'boombap' ? 'Boom-Bap' : vibe === 'lofi' ? 'Lo-Fi' : vibe}
@@ -934,19 +935,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             {/* Waterfall Canvas */}
             <div
               onClick={!isEngineActive ? handleToggleEngine : undefined}
-              className="lg:col-span-3 relative rounded-xl overflow-hidden border border-[#232327] bg-[#0a0a0b] shadow-inner cursor-pointer group"
+              className="lg:col-span-3 relative rounded-none overflow-hidden border border-[#3a362f] bg-[#11100E] shadow-inner cursor-pointer group"
             >
               <canvas ref={canvasRef} className="w-full h-60 sm:h-68 block" />
 
               {!isEngineActive && (
-                <div className="absolute inset-0 bg-[#0a0a0b]/85 flex flex-col items-center justify-center p-6 text-center space-y-2 group-hover:bg-[#0a0a0b]/75 transition-all">
-                  <div className="w-14 h-14 rounded-full bg-[#ff5a1f] text-[#0a0a0b] flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform">
+                <div className="absolute inset-0 bg-[#11100E]/85 flex flex-col items-center justify-center p-6 text-center space-y-2 group-hover:bg-[#11100E]/75 transition-all">
+                  <div className="w-14 h-14 rounded-full bg-[#C2332B] text-[#11100E] flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform">
                     <Play className="w-6 h-6 fill-current ml-1" />
                   </div>
-                  <h3 className="font-shoulders font-bold text-2xl text-[#ece7dd] tracking-tight">
+                  <h3 className="font-shoulders font-bold text-2xl text-[#E7E0D4] tracking-tight">
                     Click to Engage Urban MIDI Waterfall Engine
                   </h3>
-                  <p className="text-xs font-mono text-[#8a888f] max-w-sm">
+                  <p className="text-xs font-mono text-[#B9BDC2] max-w-sm">
                     Cascading MIDI streams, reactive skyline visualizers & authentic street drum synthesis.
                   </p>
                 </div>
@@ -954,46 +955,46 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
 
             {/* Live FFT Spectrum & Real-Time Hex Bytecode Monitor */}
-            <div className="lg:col-span-1 flex flex-col justify-between gap-3 p-3.5 rounded-xl bg-[#0a0a0b] border border-[#232327]">
+            <div className="lg:col-span-1 flex flex-col justify-between gap-3 p-3.5 rounded-none bg-[#11100E] border border-[#3a362f]">
               <div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#8a888f] mb-1.5">
+                <div className="flex items-center justify-between text-[11px] font-mono text-[#B9BDC2] mb-1.5">
                   <span className="flex items-center gap-1">
-                    <Waves className="w-3.5 h-3.5 text-[#2fd9c4]" /> FFT SPECTRUM
+                    <Waves className="w-3.5 h-3.5 text-[#C5A36A]" /> FFT SPECTRUM
                   </span>
-                  <span className="text-[#ff5a1f] text-[9px] uppercase font-bold">20Hz - 20kHz</span>
+                  <span className="text-[#C2332B] text-[9px] uppercase font-bold">20Hz - 20kHz</span>
                 </div>
-                <div className="rounded overflow-hidden border border-[#1a1a1f] bg-[#070708]">
+                <div className="rounded-none overflow-hidden border border-[#11100E] bg-[#11100E]">
                   <canvas ref={spectrumCanvasRef} className="w-full h-16 block" />
                 </div>
               </div>
 
               {/* Decoded Bytecode Inspector */}
               <div className="space-y-1.5 font-mono text-[10px]">
-                <div className="text-[#8a888f] flex items-center justify-between border-b border-[#1a1a1f] pb-1">
+                <div className="text-[#B9BDC2] flex items-center justify-between border-b border-[#11100E] pb-1">
                   <span>LAST MIDI PACKET</span>
-                  <span className="text-[#2fd9c4]">{selectedHexNote.note}</span>
+                  <span className="text-[#C5A36A]">{selectedHexNote.note}</span>
                 </div>
-                <div className="p-2 rounded bg-[#131316] border border-[#232327] text-[#ece7dd] space-y-1">
+                <div className="p-2 rounded-none bg-[#171512] border border-[#3a362f] text-[#E7E0D4] space-y-1">
                   <div className="flex justify-between">
-                    <span className="text-[#8a888f]">HEX:</span>
-                    <span className="text-[#ff5a1f] font-bold">{selectedHexNote.hex}</span>
+                    <span className="text-[#B9BDC2]">HEX:</span>
+                    <span className="text-[#C2332B] font-bold">{selectedHexNote.hex}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[#8a888f]">MIDI NOTE:</span>
+                    <span className="text-[#B9BDC2]">MIDI NOTE:</span>
                     <span>{selectedHexNote.midi}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[#8a888f]">VELOCITY:</span>
-                    <span className="text-[#2fd9c4]">{selectedHexNote.vel} / 127</span>
+                    <span className="text-[#B9BDC2]">VELOCITY:</span>
+                    <span className="text-[#C5A36A]">{selectedHexNote.vel} / 127</span>
                   </div>
                 </div>
               </div>
 
               {/* Microtiming Fine Drag Adjuster */}
               <div className="space-y-1 font-mono text-[10px]">
-                <div className="flex justify-between text-[#8a888f]">
+                <div className="flex justify-between text-[#B9BDC2]">
                   <span>POCKET OFFSET:</span>
-                  <span className="text-[#ff5a1f] font-bold">{pocketOffsetMs} ms</span>
+                  <span className="text-[#C2332B] font-bold">{pocketOffsetMs} ms</span>
                 </div>
                 <input
                   type="range"
@@ -1001,9 +1002,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   max="60"
                   value={pocketOffsetMs}
                   onChange={(e) => setPocketOffsetMs(Number(e.target.value))}
-                  className="w-full h-1 bg-[#232327] accent-[#ff5a1f] cursor-pointer"
+                  className="w-full h-1 bg-[#3a362f] accent-[#C2332B] cursor-pointer"
                 />
-                <div className="flex justify-between text-[8px] text-[#8a888f]">
+                <div className="flex justify-between text-[8px] text-[#B9BDC2]">
                   <span>-50ms (Rush)</span>
                   <span>0ms (Grid)</span>
                   <span>+60ms (Drag)</span>
@@ -1013,24 +1014,24 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
 
           {/* 6-Track Stem Console (Mute / Solo / Faders) */}
-          <div className="p-3.5 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-3">
+          <div className="p-3.5 rounded-none bg-[#11100E] border border-[#3a362f] space-y-3">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-[#ece7dd] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <Sliders className="w-3.5 h-3.5 text-[#ff5a1f]" /> 6-Track Stem Console (Live Multi-Bus)
+              <span className="text-[#E7E0D4] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <Sliders className="w-3.5 h-3.5 text-[#C2332B]" /> 6-Track Stem Console (Live Multi-Bus)
               </span>
-              <span className="text-[10px] text-[#8a888f]">Independent Stem Isolation & Level Automation</span>
+              <span className="text-[10px] text-[#B9BDC2]">Independent Stem Isolation & Level Automation</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
               {stems.map((stem) => (
                 <div
                   key={stem.id}
-                  className={`p-2.5 rounded border transition-all text-xs font-mono flex flex-col justify-between ${
+                  className={`p-2.5 rounded-none border transition-all text-xs font-mono flex flex-col justify-between ${
                     stem.isMuted
-                      ? 'bg-[#131316]/50 border-[#232327] opacity-60'
+                      ? 'bg-[#171512]/50 border-[#3a362f] opacity-60'
                       : stem.isSolo
-                      ? 'bg-[#1a1412] border-[#ff5a1f] shadow-sm'
-                      : 'bg-[#131316] border-[#232327]'
+                      ? 'bg-[#171512] border-[#C2332B] shadow-sm'
+                      : 'bg-[#171512] border-[#3a362f]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
@@ -1039,23 +1040,23 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                     </span>
                     <span
                       className="w-1.5 h-1.5 rounded-full"
-                      style={{ backgroundColor: stem.isMuted ? '#8a888f' : stem.color }}
+                      style={{ backgroundColor: stem.isMuted ? '#B9BDC2' : stem.color }}
                     />
                   </div>
 
                   <div className="flex items-center gap-1 my-2">
                     <button
                       onClick={() => toggleStemMute(stem.id)}
-                      className={`flex-1 py-0.5 rounded text-[9px] font-bold uppercase transition-colors ${
-                        stem.isMuted ? 'bg-[#ff5a1f] text-[#0a0a0b]' : 'bg-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                      className={`flex-1 py-0.5 rounded-none text-[9px] font-bold uppercase transition-colors ${
+                        stem.isMuted ? 'bg-[#C2332B] text-[#11100E]' : 'bg-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                       }`}
                     >
                       M
                     </button>
                     <button
                       onClick={() => toggleStemSolo(stem.id)}
-                      className={`flex-1 py-0.5 rounded text-[9px] font-bold uppercase transition-colors ${
-                        stem.isSolo ? 'bg-[#2fd9c4] text-[#0a0a0b]' : 'bg-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                      className={`flex-1 py-0.5 rounded-none text-[9px] font-bold uppercase transition-colors ${
+                        stem.isSolo ? 'bg-[#C5A36A] text-[#11100E]' : 'bg-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                       }`}
                     >
                       S
@@ -1063,7 +1064,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </div>
 
                   <div className="space-y-1">
-                    <div className="flex justify-between text-[8px] text-[#8a888f]">
+                    <div className="flex justify-between text-[8px] text-[#B9BDC2]">
                       <span>VOL</span>
                       <span>{stem.volume}%</span>
                     </div>
@@ -1074,7 +1075,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                       value={stem.volume}
                       disabled={stem.isMuted}
                       onChange={(e) => setStemVolume(stem.id, Number(e.target.value))}
-                      className="w-full h-1 bg-[#232327] accent-[#ff5a1f] cursor-pointer disabled:opacity-30"
+                      className="w-full h-1 bg-[#3a362f] accent-[#C2332B] cursor-pointer disabled:opacity-30"
                     />
                   </div>
                 </div>
@@ -1085,10 +1086,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           {/* 16 MPC Rubber Pads */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-[#ece7dd] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <Grid className="w-3.5 h-3.5 text-[#ff5a1f]" /> MPC 4x4 Velocity Rubber Pads (Interactive)
+              <span className="text-[#E7E0D4] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <Grid className="w-3.5 h-3.5 text-[#C2332B]" /> MPC 4x4 Velocity Rubber Pads (Interactive)
               </span>
-              <span className="text-[10px] text-[#8a888f]">Press hotkeys or tap pads</span>
+              <span className="text-[10px] text-[#B9BDC2]">Press hotkeys or tap pads</span>
             </div>
 
             <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
@@ -1098,10 +1099,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <button
                     key={pad.id}
                     onClick={() => triggerPadHit(pad, 120)}
-                    className={`h-14 rounded p-1.5 flex flex-col items-center justify-between border transition-all text-center cursor-pointer select-none active:scale-95 ${
+                    className={`h-14 rounded-none p-1.5 flex flex-col items-center justify-between border transition-all text-center cursor-pointer select-none active:scale-95 ${
                       isLit
-                        ? 'bg-[#ece7dd] text-[#0a0a0b] border-[#ece7dd] scale-105 font-bold shadow-lg'
-                        : 'bg-[#0a0a0b] hover:bg-[#1a1a1f] border-[#232327] text-[#ece7dd]'
+                        ? 'bg-[#E7E0D4] text-[#11100E] border-[#E7E0D4] scale-105 font-bold shadow-lg'
+                        : 'bg-[#11100E] hover:bg-[#11100E] border-[#3a362f] text-[#E7E0D4]'
                     }`}
                   >
                     <div className="w-full flex items-center justify-between text-[8px] font-mono opacity-60">
@@ -1121,11 +1122,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
 
           {/* Live MIDI Byte stream log */}
-          <div className="p-3 rounded bg-[#0a0a0b] border border-[#232327] flex items-center justify-between text-[10px] font-mono text-[#8a888f]">
+          <div className="p-3 rounded-none bg-[#11100E] border border-[#3a362f] flex items-center justify-between text-[10px] font-mono text-[#B9BDC2]">
             <span className="flex items-center gap-1.5 truncate">
-              <Terminal className="w-3 h-3 text-[#ff5a1f] shrink-0" /> {midiLog[0]}
+              <Terminal className="w-3 h-3 text-[#C2332B] shrink-0" /> {midiLog[0]}
             </span>
-            <span className="text-[#ff5a1f] shrink-0 font-bold ml-2">
+            <span className="text-[#C2332B] shrink-0 font-bold ml-2">
               {currentVibeConfig.title} &bull; {bpm} BPM
             </span>
           </div>
@@ -1178,9 +1179,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* THREE TRACKS. ONE RECORD. (GRANULAR EXPANDED DEEP-DIVE) */}
         {/* ======================================================================= */}
         <section className="tracks space-y-16">
-          <div className="border-b border-[#232327] pb-4">
+          <div className="border-b border-[#3a362f] pb-4">
             <h2 className="tracks-h2">Three tracks. One record.</h2>
-            <p className="text-sm font-mono text-[#8a888f]">
+            <p className="text-sm font-mono text-[#B9BDC2]">
               A comprehensive three-fold technical breakdown bridging acoustic instincts, digital MIDI protocols, and groove physics.
             </p>
           </div>
@@ -1188,17 +1189,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           {/* ===================================================================== */}
           {/* TRACK 01: THE POCKET (DEEP-DIVE GRANULAR ANALYSIS) */}
           {/* ===================================================================== */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#131316] border border-[#37373d] space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#232327] pb-4">
+          <div className="p-6 sm:p-8 rounded-none bg-[#171512] border border-[#3a362f] space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#3a362f] pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded bg-[#ff5a1f] text-[#0a0a0b] flex items-center justify-center font-shoulders font-black text-2xl">
+                <div className="w-10 h-10 rounded-none bg-[#C2332B] text-[#11100E] flex items-center justify-center font-shoulders font-black text-2xl">
                   01
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#ff5a1f] block">
+                  <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#C2332B] block">
                     MODULE 01 &bull; RHYTHMIC TIMELINES
                   </span>
-                  <h3 className="font-shoulders font-bold text-2xl text-[#ece7dd]">
+                  <h3 className="font-shoulders font-bold text-2xl text-[#E7E0D4]">
                     THE POCKET: Rap Cadence, Subdivision & Microtiming Control
                   </h3>
                 </div>
@@ -1206,118 +1207,118 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <button
                 onClick={() => onEnterCurriculum('module-1', 'm1-l1')}
-                className="px-3.5 py-1.5 rounded bg-[#232327] hover:bg-[#37373d] text-xs font-mono text-[#ff5a1f] flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-none bg-[#3a362f] hover:bg-[#3a362f] text-xs font-mono text-[#C2332B] flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Explore Module 01 (8 Lessons)</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            <p className="track-desc text-sm leading-relaxed text-[#ece7dd]/90">
+            <p className="track-desc text-sm leading-relaxed text-[#E7E0D4]/90">
               Where does a rapper actually put the words? Start with the beat as a repeating timeline, break it into subdivisions, then learn to place your cadence on top of, inside, or behind the beat — on purpose.
             </p>
 
             {/* Granular Section 1.1: Millisecond Temporal Calculus */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#ff5a1f] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C2332B] uppercase font-bold flex items-center gap-1.5">
                   <Clock className="w-3 h-3" /> 1.1 Temporal Pulse Equation
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   T_beat = 60,000 / BPM (ms)
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   At 85 BPM, exactly 705.8ms elapses per quarter-note integer. This integer pulse is the unshakeable foundation of your internal oscillator.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#2fd9c4] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold flex items-center gap-1.5">
                   <Activity className="w-3 h-3" /> 1.2 Motor-Vocal Independence
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Decoupled Neurological Clocks
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   Amateur vocalists speed up when syllables condense. True masters keep hand/foot motor clocks locked at 1x while vocal speech shifts to 4x or 3T.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#e0a030] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold flex items-center gap-1.5">
                   <Zap className="w-3 h-3" /> 1.3 Microtiming Pocket Lag
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Behind the Beat: +20ms to +55ms
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   Placing vocal consonants 35ms behind the snare creates the signature relaxed, heavy head-nod bounce of boom-bap and modern drill.
                 </p>
               </div>
             </div>
 
             {/* Interactive Cadence & Syllabic Meter Workbench */}
-            <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-4">
+            <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-xs font-mono font-bold uppercase text-[#ece7dd] flex items-center gap-2">
-                  <Mic className="w-3.5 h-3.5 text-[#ff5a1f]" /> Interactive Syllabic Meter & Cadence Audition
+                <span className="text-xs font-mono font-bold uppercase text-[#E7E0D4] flex items-center gap-2">
+                  <Mic className="w-3.5 h-3.5 text-[#C2332B]" /> Interactive Syllabic Meter & Cadence Audition
                 </span>
-                <span className="text-[10px] font-mono text-[#8a888f]">Click meter to trigger speech cadence engine</span>
+                <span className="text-[10px] font-mono text-[#B9BDC2]">Click meter to trigger speech cadence engine</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <button
                   onClick={() => auditionSyllableMeter('anapest')}
-                  className={`p-3 rounded-lg border text-left transition-all cursor-pointer ${
+                  className={`p-3 rounded-none border text-left transition-all cursor-pointer ${
                     activeSyllableDrill === 'anapest'
-                      ? 'bg-[#1a1412] border-[#ff5a1f] text-[#ece7dd]'
-                      : 'bg-[#131316] border-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                      ? 'bg-[#171512] border-[#C2332B] text-[#E7E0D4]'
+                      : 'bg-[#171512] border-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                   }`}
                 >
-                  <div className="text-[10px] font-mono text-[#ff5a1f] uppercase font-bold">Anapestic (ta-ta-TUM)</div>
-                  <div className="font-mono text-xs text-[#ece7dd] my-1 font-bold">"In the POCKET"</div>
+                  <div className="text-[10px] font-mono text-[#C2332B] uppercase font-bold">Anapestic (ta-ta-TUM)</div>
+                  <div className="font-mono text-xs text-[#E7E0D4] my-1 font-bold">"In the POCKET"</div>
                   <div className="text-[10px] opacity-70">Weak &rarr; Weak &rarr; STRONG (Punch landing on 1)</div>
                 </button>
 
                 <button
                   onClick={() => auditionSyllableMeter('dactyl')}
-                  className={`p-3 rounded-lg border text-left transition-all cursor-pointer ${
+                  className={`p-3 rounded-none border text-left transition-all cursor-pointer ${
                     activeSyllableDrill === 'dactyl'
-                      ? 'bg-[#1a1412] border-[#ff5a1f] text-[#ece7dd]'
-                      : 'bg-[#131316] border-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                      ? 'bg-[#171512] border-[#C2332B] text-[#E7E0D4]'
+                      : 'bg-[#171512] border-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                   }`}
                 >
-                  <div className="text-[10px] font-mono text-[#2fd9c4] uppercase font-bold">Dactylic (TUM-ta-ta)</div>
-                  <div className="font-mono text-xs text-[#ece7dd] my-1 font-bold">"HIT with the"</div>
+                  <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold">Dactylic (TUM-ta-ta)</div>
+                  <div className="font-mono text-xs text-[#E7E0D4] my-1 font-bold">"HIT with the"</div>
                   <div className="text-[10px] opacity-70">STRONG &rarr; Weak &rarr; Weak (Front-loaded attack)</div>
                 </button>
 
                 <button
                   onClick={() => auditionSyllableMeter('hemiola')}
-                  className={`p-3 rounded-lg border text-left transition-all cursor-pointer ${
+                  className={`p-3 rounded-none border text-left transition-all cursor-pointer ${
                     activeSyllableDrill === 'hemiola'
-                      ? 'bg-[#1a1412] border-[#ff5a1f] text-[#ece7dd]'
-                      : 'bg-[#131316] border-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                      ? 'bg-[#171512] border-[#C2332B] text-[#E7E0D4]'
+                      : 'bg-[#171512] border-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                   }`}
                 >
-                  <div className="text-[10px] font-mono text-[#e0a030] uppercase font-bold">3-Over-4 Hemiola Cross</div>
-                  <div className="font-mono text-xs text-[#ece7dd] my-1 font-bold">"ONE two THREE four FIVE"</div>
+                  <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold">3-Over-4 Hemiola Cross</div>
+                  <div className="font-mono text-xs text-[#E7E0D4] my-1 font-bold">"ONE two THREE four FIVE"</div>
                   <div className="text-[10px] opacity-70">3-syllable grouping floating across 4/4 grid lines</div>
                 </button>
               </div>
 
               {/* Granular Subdivision Ladder Auditions */}
-              <div className="pt-2 border-t border-[#1a1a1f] flex flex-wrap items-center justify-between gap-3">
-                <span className="text-[11px] font-mono text-[#8a888f]">Subdivision Audition:</span>
+              <div className="pt-2 border-t border-[#11100E] flex flex-wrap items-center justify-between gap-3">
+                <span className="text-[11px] font-mono text-[#B9BDC2]">Subdivision Audition:</span>
                 <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
                   {(['quarter', '8th', '16th', 'triplet'] as const).map((sub) => (
                     <button
                       key={sub}
                       onClick={() => auditionSubdivision(sub)}
-                      className={`px-2.5 py-1 rounded capitalize border transition-all cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-none capitalize border transition-all cursor-pointer ${
                         activeSubdivisionTest === sub
-                          ? 'bg-[#ff5a1f] text-[#0a0a0b] border-[#ff5a1f] font-bold'
-                          : 'bg-[#131316] border-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                          ? 'bg-[#C2332B] text-[#11100E] border-[#C2332B] font-bold'
+                          : 'bg-[#171512] border-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                       }`}
                     >
                       {sub === 'quarter' ? '1/4 Beat' : sub === '8th' ? '1/8 Note' : sub === '16th' ? '1/16 Note' : '1/8T Triplet'}
@@ -1342,17 +1343,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           {/* ===================================================================== */}
           {/* TRACK 02: MIDI FOR DUMMIES (DEEP-DIVE GRANULAR ANALYSIS) */}
           {/* ===================================================================== */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#131316] border border-[#37373d] space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#232327] pb-4">
+          <div className="p-6 sm:p-8 rounded-none bg-[#171512] border border-[#3a362f] space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#3a362f] pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded bg-[#2fd9c4] text-[#0a0a0b] flex items-center justify-center font-shoulders font-black text-2xl">
+                <div className="w-10 h-10 rounded-none bg-[#C5A36A] text-[#11100E] flex items-center justify-center font-shoulders font-black text-2xl">
                   02
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#2fd9c4] block">
+                  <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#C5A36A] block">
                     MODULE 02 &bull; MACHINE PROTOCOLS & HARMONY
                   </span>
-                  <h3 className="font-shoulders font-bold text-2xl text-[#ece7dd]">
+                  <h3 className="font-shoulders font-bold text-2xl text-[#E7E0D4]">
                     MIDI FOR DUMMIES: The Grid, Pitch, Velocity & Acoustic Spectrum
                   </h3>
                 </div>
@@ -1360,87 +1361,87 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <button
                 onClick={() => onEnterCurriculum('module-2', 'm2-l1')}
-                className="px-3.5 py-1.5 rounded bg-[#232327] hover:bg-[#37373d] text-xs font-mono text-[#2fd9c4] flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-none bg-[#3a362f] hover:bg-[#3a362f] text-xs font-mono text-[#C5A36A] flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Explore Module 02 (10 Lessons)</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            <p className="track-desc text-sm leading-relaxed text-[#ece7dd]/90">
+            <p className="track-desc text-sm leading-relaxed text-[#E7E0D4]/90">
               The piano roll is a map, not a wall of tiny rectangles. Horizontal is when. Vertical is what pitch. Length is how long. Velocity is how hard. Learn to translate what you hear into coordinates the machine can read.
             </p>
 
             {/* Granular Section 2.1: The 7-Bit Machine Architecture */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#2fd9c4] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold flex items-center gap-1.5">
                   <Cpu className="w-3 h-3" /> 2.1 Low-Level Hex Protocol
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Status + Data 1 + Data 2
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
-                  A Note-On event is transmitted as a 3-byte packet: <code className="text-[#2fd9c4]">0x90 (NoteOn Ch1)</code>, <code className="text-[#ff5a1f]">0x3C (C3)</code>, <code className="text-[#ece7dd]">0x7F (127 Vel)</code>.
+                <p className="text-xs text-[#B9BDC2] leading-normal">
+                  A Note-On event is transmitted as a 3-byte packet: <code className="text-[#C5A36A]">0x90 (NoteOn Ch1)</code>, <code className="text-[#C2332B]">0x3C (C3)</code>, <code className="text-[#E7E0D4]">0x7F (127 Vel)</code>.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#ff5a1f] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C2332B] uppercase font-bold flex items-center gap-1.5">
                   <Grid className="w-3 h-3" /> 2.2 Cartesian Grid Coordinate
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   X (Ticks) &times; Y (Semitones)
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   DAWs render time on X (subdivisions per beat) and pitch frequency on Y (f = 440 * 2^((MIDI - 69)/12) Hz). Length is note duration (gate time).
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#e0a030] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold flex items-center gap-1.5">
                   <Waves className="w-3 h-3" /> 2.3 250Hz - 400Hz Mud Cutoff
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Acoustic Spectrum Carving
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   Notching -4dB at 300Hz eliminates cardboard boxiness, allowing 40Hz 808 subs and 2.5kHz snare transients to translate cleanly to phone speakers.
                 </p>
               </div>
             </div>
 
             {/* Interactive Acoustic Spectrum Analyzer */}
-            <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-3">
+            <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-xs font-mono font-bold uppercase text-[#ece7dd] flex items-center gap-2">
-                  <Layers className="w-3.5 h-3.5 text-[#2fd9c4]" /> 6-Band Frequency Spectrum & Audition Matrix
+                <span className="text-xs font-mono font-bold uppercase text-[#E7E0D4] flex items-center gap-2">
+                  <Layers className="w-3.5 h-3.5 text-[#C5A36A]" /> 6-Band Frequency Spectrum & Audition Matrix
                 </span>
-                <span className="text-[10px] font-mono text-[#8a888f]">Click any band to audition its acoustic role</span>
+                <span className="text-[10px] font-mono text-[#B9BDC2]">Click any band to audition its acoustic role</span>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
                 {[
-                  { id: 'sub', name: 'SUB BASS', range: '20 - 60 Hz', role: 'Felt, not heard (808)', color: '#ff5a1f' },
+                  { id: 'sub', name: 'SUB BASS', range: '20 - 60 Hz', role: 'Felt, not heard (808)', color: '#C2332B' },
                   { id: 'bass', name: 'KICK THUMP', range: '60 - 250 Hz', role: 'Chest knock punch', color: '#2fd9c4' },
-                  { id: 'mud', name: 'MUD ZONE', range: '250 - 500 Hz', role: 'Notch sweep area', color: '#e0a030' },
-                  { id: 'warmth', name: 'WARMTH', range: '500 - 2 kHz', role: 'Vocal/Rhodes body', color: '#ece7dd' },
-                  { id: 'snap', name: 'SNAP CRACK', range: '2 - 6 kHz', role: 'Snare transient attack', color: '#ff5a1f' },
-                  { id: 'air', name: 'AIR & SHEEN', range: '6 - 20 kHz', role: 'Hi-hat & vocal breath', color: '#8a888f' }
+                  { id: 'mud', name: 'MUD ZONE', range: '250 - 500 Hz', role: 'Notch sweep area', color: '#C5A36A' },
+                  { id: 'warmth', name: 'WARMTH', range: '500 - 2 kHz', role: 'Vocal/Rhodes body', color: '#E7E0D4' },
+                  { id: 'snap', name: 'SNAP CRACK', range: '2 - 6 kHz', role: 'Snare transient attack', color: '#C2332B' },
+                  { id: 'air', name: 'AIR & SHEEN', range: '6 - 20 kHz', role: 'Hi-hat & vocal breath', color: '#B9BDC2' }
                 ].map((b) => (
                   <button
                     key={b.id}
                     onClick={() => auditionFreqBand(b.id)}
-                    className={`p-2.5 rounded border text-left font-mono transition-all cursor-pointer ${
+                    className={`p-2.5 rounded-none border text-left font-mono transition-all cursor-pointer ${
                       activeFreqBand === b.id
-                        ? 'bg-[#1a1412] border-[#2fd9c4] text-[#ece7dd] shadow-sm'
-                        : 'bg-[#131316] border-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                        ? 'bg-[#171512] border-[#C5A36A] text-[#E7E0D4] shadow-sm'
+                        : 'bg-[#171512] border-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                     }`}
                   >
                     <div className="text-[9px] font-bold uppercase truncate" style={{ color: b.color }}>
                       {b.name}
                     </div>
-                    <div className="text-[10px] text-[#ece7dd] font-bold my-0.5">{b.range}</div>
+                    <div className="text-[10px] text-[#E7E0D4] font-bold my-0.5">{b.range}</div>
                     <div className="text-[8px] opacity-70 truncate">{b.role}</div>
                   </button>
                 ))}
@@ -1462,17 +1463,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           {/* ===================================================================== */}
           {/* TRACK 03: THE INTERPLAY (DEEP-DIVE GRANULAR ANALYSIS) */}
           {/* ===================================================================== */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#131316] border border-[#37373d] space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#232327] pb-4">
+          <div className="p-6 sm:p-8 rounded-none bg-[#171512] border border-[#3a362f] space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#3a362f] pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded bg-[#e0a030] text-[#0a0a0b] flex items-center justify-center font-shoulders font-black text-2xl">
+                <div className="w-10 h-10 rounded-none bg-[#C5A36A] text-[#11100E] flex items-center justify-center font-shoulders font-black text-2xl">
                   03
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#e0a030] block">
+                  <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#C5A36A] block">
                     MODULE 03 &bull; GROOVE MECHANICS & MASTERING
                   </span>
-                  <h3 className="font-shoulders font-bold text-2xl text-[#ece7dd]">
+                  <h3 className="font-shoulders font-bold text-2xl text-[#E7E0D4]">
                     THE INTERPLAY: Quantization, Swing, Microtiming & Humanization
                   </h3>
                 </div>
@@ -1480,63 +1481,63 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <button
                 onClick={() => onEnterCurriculum('module-3', 'm3-l1')}
-                className="px-3.5 py-1.5 rounded bg-[#232327] hover:bg-[#37373d] text-xs font-mono text-[#e0a030] flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded-none bg-[#3a362f] hover:bg-[#3a362f] text-xs font-mono text-[#C5A36A] flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Explore Module 03 (10 Lessons)</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            <p className="track-desc text-sm leading-relaxed text-[#ece7dd]/90">
+            <p className="track-desc text-sm leading-relaxed text-[#E7E0D4]/90">
               The grid is a ruler, not a prison. Learn when to snap to it and when to bend it — and the difference between timing that's mathematically correct and timing that actually grooves.
             </p>
 
             {/* Granular Section 3.1: Roger Linn MPC Swing Math */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#e0a030] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold flex items-center gap-1.5">
                   <Sliders className="w-3 h-3" /> 3.1 The MPC Swing Formula
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Delta_t = T_16th * (Swing% - 50%) / 50%
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   Delays every even-numbered sixteenth note (s2, s4, s6). 50% is dead straight, 62% is MPC boom-bap, 72% is J Dilla drunken swing.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#ff5a1f] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C2332B] uppercase font-bold flex items-center gap-1.5">
                   <Radio className="w-3 h-3" /> 3.2 Sidechain Ducking Envelope
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Kick &rarr; 808 Dynamic Space
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   Triggering a 35ms -6dB gain reduction on the 808 sub whenever the kick hits eliminates phase cancellation in the sub 60Hz register.
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-2">
-                <div className="text-[10px] font-mono text-[#2fd9c4] uppercase font-bold flex items-center gap-1.5">
+              <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-2">
+                <div className="text-[10px] font-mono text-[#C5A36A] uppercase font-bold flex items-center gap-1.5">
                   <Headphones className="w-3 h-3" /> 3.3 The Car & Phone Test
                 </div>
-                <div className="font-mono text-sm text-[#ece7dd] font-bold">
+                <div className="font-mono text-sm text-[#E7E0D4] font-bold">
                   Mono-Summed Saturation
                 </div>
-                <p className="text-xs text-[#8a888f] leading-normal">
+                <p className="text-xs text-[#B9BDC2] leading-normal">
                   Sub-bass must have subtle 2nd and 3rd harmonic saturation (120Hz-240Hz) or it will disappear completely on small iPhone speakers.
                 </p>
               </div>
             </div>
 
             {/* Interactive Roger Linn Swing Calculator & Audition Strip */}
-            <div className="p-4 rounded-xl bg-[#0a0a0b] border border-[#232327] space-y-3">
+            <div className="p-4 rounded-none bg-[#11100E] border border-[#3a362f] space-y-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="text-xs font-mono font-bold uppercase text-[#ece7dd] flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-[#e0a030]" /> Interactive Swing Ratio & Microtiming Lab
+                <span className="text-xs font-mono font-bold uppercase text-[#E7E0D4] flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C5A36A]" /> Interactive Swing Ratio & Microtiming Lab
                 </span>
-                <span className="text-[10px] font-mono text-[#8a888f]">Audition exact MPC swing values</span>
+                <span className="text-[10px] font-mono text-[#B9BDC2]">Audition exact MPC swing values</span>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 font-mono text-xs">
@@ -1554,13 +1555,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                       setSwingPercent(s.swing);
                       soundEngine.playSwingGroove(s.swing);
                     }}
-                    className={`p-2.5 rounded border text-left transition-all cursor-pointer ${
+                    className={`p-2.5 rounded-none border text-left transition-all cursor-pointer ${
                       activeSwingPreset === s.swing
-                        ? 'bg-[#1a1412] border-[#e0a030] text-[#ece7dd]'
-                        : 'bg-[#131316] border-[#232327] text-[#8a888f] hover:text-[#ece7dd]'
+                        ? 'bg-[#171512] border-[#C5A36A] text-[#E7E0D4]'
+                        : 'bg-[#171512] border-[#3a362f] text-[#B9BDC2] hover:text-[#E7E0D4]'
                     }`}
                   >
-                    <div className="text-[10px] text-[#e0a030] font-bold">{s.label}</div>
+                    <div className="text-[10px] text-[#C5A36A] font-bold">{s.label}</div>
                     <div className="text-[8px] opacity-70 truncate">{s.sub}</div>
                   </button>
                 ))}
@@ -1583,26 +1584,26 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* ======================================================================= */}
         {/* COMPLETE 28-LESSON CURRICULUM SYLLABUS (GRANULAR EXPANDED INDEX) */}
         {/* ======================================================================= */}
-        <section className="mt-20 border-t border-[#232327] pt-12 space-y-8">
+        <section className="mt-20 border-t border-[#3a362f] pt-12 space-y-8">
           <div>
             <span className="eyebrow">Exhaustive Curriculum Roadmap</span>
             <h2 className="tracks-h2 mb-2">28 Lessons. Zero Gatekeeping.</h2>
-            <p className="text-sm font-mono text-[#8a888f] max-w-2xl">
+            <p className="text-sm font-mono text-[#B9BDC2] max-w-2xl">
               From the mechanics of internal biological clocks to advanced sidechain compression and mobile mix translation, every single lesson bridges street production with formal engineering principles.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#131316] border border-[#C5A059]/30">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-none bg-[#171512] border border-[#C5A36A]/30">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#FF5A1F] font-bold">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C2332B] font-bold">
                   Definitive Printable Editions
                 </span>
-                <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#C5A059]/20 text-[#C5A059] border border-[#C5A059]/30">
+                <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-none bg-[#C5A36A]/20 text-[#C5A36A] border border-[#C5A36A]/30">
                   Version 2.5
                 </span>
               </div>
-              <p className="text-xs font-mono text-[#ECE7DD]">
+              <p className="text-xs font-mono text-[#E7E0D4]">
                 Download the complete standalone textbook with all 28 lessons, ASCII timeline matrices, and audio glossary.
               </p>
             </div>
@@ -1611,7 +1612,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <a
                 href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
                 download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#FF5A1F] hover:bg-[#E04B14] text-[#0A0A0B] text-xs font-mono font-bold transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-none bg-[#C2332B] hover:bg-[#C2332B] text-[#11100E] text-xs font-mono font-bold transition-colors"
                 title="Download Standalone Printable PDF"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -1621,7 +1622,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <a
                 href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
                 download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#232327] hover:bg-[#2D2D33] text-[#ECE7DD] border border-[#37373D] text-xs font-mono font-bold transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-none bg-[#3a362f] hover:bg-[#3a362f] text-[#E7E0D4] border border-[#3a362f] text-xs font-mono font-bold transition-colors"
                 title="Download eBook (.docx)"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -1634,38 +1635,38 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             {CURRICULUM_MODULES.map((mod) => (
               <div
                 key={mod.id}
-                className="rounded-2xl bg-[#131316] border border-[#232327] p-5 space-y-4 flex flex-col justify-between"
+                className="rounded-none bg-[#171512] border border-[#3a362f] p-5 space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between border-b border-[#232327] pb-2">
-                    <span className="text-xs font-mono font-bold uppercase text-[#ff5a1f]">
+                  <div className="flex items-center justify-between border-b border-[#3a362f] pb-2">
+                    <span className="text-xs font-mono font-bold uppercase text-[#C2332B]">
                       MODULE 0{mod.number}
                     </span>
-                    <span className="text-[10px] font-mono text-[#8a888f]">
+                    <span className="text-[10px] font-mono text-[#B9BDC2]">
                       {mod.lessons.length} LESSONS
                     </span>
                   </div>
 
-                  <h3 className="font-shoulders font-bold text-xl text-[#ece7dd]">{mod.title}</h3>
-                  <p className="text-xs font-mono text-[#8a888f] leading-relaxed line-clamp-3">
+                  <h3 className="font-shoulders font-bold text-xl text-[#E7E0D4]">{mod.title}</h3>
+                  <p className="text-xs font-mono text-[#B9BDC2] leading-relaxed line-clamp-3">
                     {mod.description}
                   </p>
 
-                  <div className="space-y-1.5 pt-2 border-t border-[#1a1a1f]">
+                  <div className="space-y-1.5 pt-2 border-t border-[#11100E]">
                     {mod.lessons.slice(0, 5).map((l, idx) => (
                       <div
                         key={l.id}
                         onClick={() => onEnterCurriculum(mod.id, l.id)}
-                        className="flex items-center justify-between p-1.5 rounded hover:bg-[#1a1a1f] text-xs font-mono cursor-pointer transition-colors group"
+                        className="flex items-center justify-between p-1.5 rounded-none hover:bg-[#11100E] text-xs font-mono cursor-pointer transition-colors group"
                       >
-                        <span className="text-[#8a888f] group-hover:text-[#ece7dd] truncate">
+                        <span className="text-[#B9BDC2] group-hover:text-[#E7E0D4] truncate">
                           {idx + 1}. {l.title}
                         </span>
-                        <ArrowRight className="w-3 h-3 text-[#37373d] group-hover:text-[#ff5a1f] shrink-0 ml-1 transition-colors" />
+                        <ArrowRight className="w-3 h-3 text-[#3a362f] group-hover:text-[#C2332B] shrink-0 ml-1 transition-colors" />
                       </div>
                     ))}
                     {mod.lessons.length > 5 && (
-                      <div className="text-[10px] font-mono text-[#8a888f] pl-1.5 pt-1">
+                      <div className="text-[10px] font-mono text-[#B9BDC2] pl-1.5 pt-1">
                         + {mod.lessons.length - 5} more advanced lessons & capstone lab
                       </div>
                     )}
@@ -1674,7 +1675,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
                 <button
                   onClick={() => onEnterCurriculum(mod.id, mod.lessons[0].id)}
-                  className="w-full py-2 rounded text-xs font-mono font-bold uppercase tracking-wider bg-[#232327] hover:bg-[#ff5a1f] hover:text-[#0a0a0b] text-[#ece7dd] transition-all cursor-pointer text-center"
+                  className="w-full py-2 rounded-none text-xs font-mono font-bold uppercase tracking-wider bg-[#3a362f] hover:bg-[#C2332B] hover:text-[#11100E] text-[#E7E0D4] transition-all cursor-pointer text-center"
                 >
                   Start Module 0{mod.number} &rarr;
                 </button>
@@ -1686,19 +1687,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* ======================================================================= */}
         {/* INTERACTIVE STREET THEORY GLOSSARY QUICK-AUDITION MATRIX */}
         {/* ======================================================================= */}
-        <section className="mt-16 rounded-2xl bg-[#131316] border border-[#232327] p-6 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#232327] pb-3">
+        <section className="mt-16 rounded-none bg-[#171512] border border-[#3a362f] p-6 space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#3a362f] pb-3">
             <div>
-              <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#ff5a1f] block">
+              <span className="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#C2332B] block">
                 STREET THEORY GLOSSARY
               </span>
-              <h3 className="font-shoulders font-bold text-2xl text-[#ece7dd]">
+              <h3 className="font-shoulders font-bold text-2xl text-[#E7E0D4]">
                 Essential Terminology with 1-Click Audio Proofs
               </h3>
             </div>
             <button
               onClick={() => onEnterCurriculum('glossary')}
-              className="text-xs font-mono text-[#ff5a1f] hover:underline cursor-pointer flex items-center gap-1"
+              className="text-xs font-mono text-[#C2332B] hover:underline cursor-pointer flex items-center gap-1"
             >
               <span>Full A-Z Encyclopedia</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -1738,20 +1739,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div
                 key={card.term}
                 onClick={card.action}
-                className="p-3.5 rounded-xl bg-[#0a0a0b] border border-[#232327] hover:border-[#ff5a1f] transition-all cursor-pointer space-y-2 group"
+                className="p-3.5 rounded-none bg-[#11100E] border border-[#3a362f] hover:border-[#C2332B] transition-all cursor-pointer space-y-2 group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono font-bold text-xs text-[#ece7dd] group-hover:text-[#ff5a1f] transition-colors">
+                  <span className="font-mono font-bold text-xs text-[#E7E0D4] group-hover:text-[#C2332B] transition-colors">
                     {card.term}
                   </span>
-                  <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#131316] text-[#8a888f] border border-[#232327]">
+                  <span className="text-[8px] font-mono px-1.5 py-0.5 rounded-none bg-[#171512] text-[#B9BDC2] border border-[#3a362f]">
                     {card.badge}
                   </span>
                 </div>
-                <p className="text-[11px] font-mono text-[#8a888f] leading-normal line-clamp-2">
+                <p className="text-[11px] font-mono text-[#B9BDC2] leading-normal line-clamp-2">
                   {card.def}
                 </p>
-                <div className="text-[9px] font-mono text-[#ff5a1f] flex items-center gap-1 opacity-80 group-hover:opacity-100">
+                <div className="text-[9px] font-mono text-[#C2332B] flex items-center gap-1 opacity-80 group-hover:opacity-100">
                   <Play className="w-2.5 h-2.5 fill-current" /> Tap to Audition
                 </div>
               </div>
@@ -1776,10 +1777,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           >
             Begin Module 01: The Pocket &rarr;
           </button>
-          <div className="text-xs font-mono text-[#8a888f] flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="text-xs font-mono text-[#B9BDC2] flex flex-wrap items-center justify-center gap-4 pt-2">
             <button
               onClick={() => setIsHtmlReaderOpen(true)}
-              className="text-[#2fd9c4] hover:underline font-bold flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
+              className="text-[#C5A36A] hover:underline font-bold flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
             >
               <span>Read HTML eBook &rarr;</span>
             </button>
@@ -1787,7 +1788,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.epub"
               download="THE_HARDWIRE_METHOD_TEXTBOOK.epub"
-              className="text-[#8b5cf6] hover:underline font-bold"
+              className="text-[#C5A36A] hover:underline font-bold"
               title="Standard EPUB Format (Apple Books, Kobo, Kindle)"
             >
               Download EPUB
@@ -1796,7 +1797,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
               download="THE_HARDWIRE_METHOD_TEXTBOOK.pdf"
-              className="text-[#ff5a1f] hover:underline font-bold"
+              className="text-[#C2332B] hover:underline font-bold"
               title="Printable 62-Page PDF"
             >
               Printable PDF (62p)
@@ -1805,7 +1806,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <a
               href="/THE_HARDWIRE_METHOD_TEXTBOOK.docx"
               download="THE_HARDWIRE_METHOD_TEXTBOOK.docx"
-              className="text-[#c5a059] hover:underline font-bold"
+              className="text-[#C5A36A] hover:underline font-bold"
             >
               Word (.docx)
             </a>
